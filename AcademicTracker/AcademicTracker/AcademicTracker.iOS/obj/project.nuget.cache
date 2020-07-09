@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "A+xMJh+AVfKLIJa1cg9/Fla12xlj4sfdbRjt66ZiZSeJpvWmn4lfLbbCzA4JA1wmcYn0aGwKI33uU/c3goL1Cg==",
+  "dgSpecHash": "QiIvq5Rwv9/Cm2b7DjYRV8wXq0QgPTpJUdJZpcRzrqIUZZEK6PfeWPjf8ovRJrE9BG9ObW1deavVVdwzSsR9+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Wesle\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.iOS\\AcademicTracker.iOS.csproj",
+  "projectFilePath": "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.iOS\\AcademicTracker.iOS.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Wesle\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\Wes\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.5.0.495\\xamarin.forms.4.5.0.495.nupkg.sha512"
   ],

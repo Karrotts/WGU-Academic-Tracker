@@ -604,23 +604,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Wesle\\.nuget\\packages\\": {},
+    "C:\\Users\\Wes\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Wesle\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj",
+      "projectUniqueName": "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj",
       "projectName": "AcademicTracker",
-      "projectPath": "C:\\Users\\Wesle\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj",
-      "packagesPath": "C:\\Users\\Wesle\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Wesle\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\obj\\",
+      "projectPath": "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj",
+      "packagesPath": "C:\\Users\\Wes\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Wesle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Wes\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
