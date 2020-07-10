@@ -9,8 +9,7 @@ namespace AcademicTracker
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new View.TermView());
         }
 
         protected override void OnStart()

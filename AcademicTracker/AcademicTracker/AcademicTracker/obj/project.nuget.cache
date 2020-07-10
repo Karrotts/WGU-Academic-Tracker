@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qt0kaivgidBLGP+3l1LG3rsNiuko9lO7VXeh5BjjAY1+ytjXRioGCZzln2TKFevfLOnZeSPSO6x5JaE4pgVixQ==",
+  "dgSpecHash": "L8wXrdF8ZW94KuJvTqvwYeTWcUYclF8TDwqEB2tYsZy8n2/veIn+1xeuA0p9a0mdCDqwyi+vPSdLMvFsz2w7TA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj",
+  "projectFilePath": "C:\\Users\\Wes\\Desktop\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wes\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Wes\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",

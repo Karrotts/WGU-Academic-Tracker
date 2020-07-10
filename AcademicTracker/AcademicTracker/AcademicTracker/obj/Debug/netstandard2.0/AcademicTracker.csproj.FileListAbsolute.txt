@@ -1,0 +1,30 @@
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\bin\Debug\netstandard2.0\AcademicTracker.deps.json
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\bin\Debug\netstandard2.0\AcademicTracker.dll
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\bin\Debug\netstandard2.0\ref\AcademicTracker.dll
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\bin\Debug\netstandard2.0\AcademicTracker.pdb
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\View\TermView.xaml.g.cs
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\AcademicTracker.AssemblyInfoInputs.cache
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\AcademicTracker.AssemblyInfo.cs
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\AcademicTracker.csproj.CoreCompileInputs.cache
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\AcademicTracker.dll
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\ref\AcademicTracker.dll
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\AcademicTracker.pdb
+C:\Users\Wes\Desktop\Projects\2020 Projects\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\AcademicTracker.csprojAssemblyReference.cache
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\bin\Debug\netstandard2.0\AcademicTracker.deps.json
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\bin\Debug\netstandard2.0\AcademicTracker.dll
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\bin\Debug\netstandard2.0\ref\AcademicTracker.dll
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\bin\Debug\netstandard2.0\AcademicTracker.pdb
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\AcademicTracker.csprojAssemblyReference.cache
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\View\TermView.xaml.g.cs
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\AcademicTracker.AssemblyInfoInputs.cache
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\AcademicTracker.AssemblyInfo.cs
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\AcademicTracker.csproj.CoreCompileInputs.cache
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\AcademicTracker.dll
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\ref\AcademicTracker.dll
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\AcademicTracker.pdb
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\View\CourseView.xaml.g.cs
+C:\Users\Wes\Desktop\WGU-Academic-Tracker\AcademicTracker\AcademicTracker\AcademicTracker\obj\Debug\netstandard2.0\View\AddTermView.xaml.g.cs

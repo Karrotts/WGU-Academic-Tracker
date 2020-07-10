@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj": {}
+    "C:\\Users\\Wes\\Desktop\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj": {
+    "C:\\Users\\Wes\\Desktop\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj",
+        "projectUniqueName": "C:\\Users\\Wes\\Desktop\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj",
         "projectName": "AcademicTracker",
-        "projectPath": "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj",
+        "projectPath": "C:\\Users\\Wes\\Desktop\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj",
         "packagesPath": "C:\\Users\\Wes\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\obj\\",
+        "outputPath": "C:\\Users\\Wes\\Desktop\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HsPMuDPoPlJL99N39anGYy3OLRfF/++cnDv0kSGmvErcDcorvmB51s7/3WyKsm4NZaZyVLEGi1T3NyI7xAjJXA==",
+  "dgSpecHash": "Jo+QmxUCVkPg4oiwyK+w1KKaVrAgfj5lAwRpiUXLO1DRXMpG2nW8dA1i/bONkGdzeacAzMFFnywMoz7bh75V1Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.Android\\AcademicTracker.Android.csproj",
+  "projectFilePath": "C:\\Users\\Wes\\Desktop\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.Android\\AcademicTracker.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wes\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\Wes\\.nuget\\packages\\xamarin.android.arch.core.common\\1.1.1.3\\xamarin.android.arch.core.common.1.1.1.3.nupkg.sha512",

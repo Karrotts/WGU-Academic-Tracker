@@ -1975,11 +1975,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.Android\\AcademicTracker.Android.csproj",
+      "projectUniqueName": "C:\\Users\\Wes\\Desktop\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.Android\\AcademicTracker.Android.csproj",
       "projectName": "AcademicTracker.Android",
-      "projectPath": "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.Android\\AcademicTracker.Android.csproj",
+      "projectPath": "C:\\Users\\Wes\\Desktop\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.Android\\AcademicTracker.Android.csproj",
       "packagesPath": "C:\\Users\\Wes\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.Android\\obj\\",
+      "outputPath": "C:\\Users\\Wes\\Desktop\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -2000,8 +2000,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj": {
-              "projectPath": "C:\\Users\\Wes\\Desktop\\Projects\\2020 Projects\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj"
+            "C:\\Users\\Wes\\Desktop\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj": {
+              "projectPath": "C:\\Users\\Wes\\Desktop\\WGU-Academic-Tracker\\AcademicTracker\\AcademicTracker\\AcademicTracker\\AcademicTracker.csproj"
             }
           }
         }

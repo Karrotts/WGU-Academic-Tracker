@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AcademicTracker.View.TermView">
+    <ContentPage.Content>
+        <StackLayout x:Name="panel" Spacing="0">
+            <Frame BackgroundColor="#0066a2" CornerRadius="0">
+                <Image Source="WGU.png" />
+            </Frame>
+            <Label Text="DEGREE PLAN" BackgroundColor="#e9e6d9" Padding="10" FontSize="Title"/>
+
+            <CollectionView ItemsSource="{Binding Terms}" SelectionMode="Single" SelectionChangedCommand="{Binding TermSelectedCommand}" SelectedItem="{Binding SelectedTerm}" Margin="15">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="5">
+                            <Frame BorderColor="#D4D4D4" Padding="20">
+                                <StackLayout>
+                                    <Label Text="{Binding Name}" Padding="0" FontSize="Medium"/>
+                                    <Label Text="April 1, 2020 to September 1, 2020" />
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Press this" Command="{Binding AddNewTermCommand}">
+
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
