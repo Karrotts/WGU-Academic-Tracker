@@ -6,9 +6,16 @@ namespace AcademicTracker.Model
 {
     public class Term
     {
-        List<Course> Courses { get; set; }
+        public List<Course> Courses = new List<Course>();
         public string Name { get; set; }
-        DateTime StartDate { get; set; }
-        DateTime EndDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
+        public Term(string name, DateTime startDate, DateTime endDate)
+        {
+            Name = name;
+            StartDate = startDate;
+            EndDate = endDate;
+        }
     }
 }

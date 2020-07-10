@@ -5,14 +5,34 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="AcademicTracker.View.TermView">
+    <ContentPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="LightSkyBlue" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout x:Name="panel" Spacing="0">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CancelSelection" NumberOfTapsRequired="1" />
+            </StackLayout.GestureRecognizers>
             <Frame BackgroundColor="#0066a2" CornerRadius="0">
-                <Image Source="WGU.png" />
+                <Image Source="WGU.png" HeightRequest="50"/>
             </Frame>
-            <Label Text="DEGREE PLAN" BackgroundColor="#e9e6d9" Padding="10" FontSize="Title"/>
+            <Label Text="&#x1f393; DEGREE PLAN" BackgroundColor="#e9e6d9" Padding="13, 10, 10, 10" FontSize="Title"/>
 
-            <CollectionView ItemsSource="{Binding Terms}" SelectionMode="Single" SelectionChangedCommand="{Binding TermSelectedCommand}" SelectedItem="{Binding SelectedTerm}" Margin="15">
+            <CollectionView x:Name="collectionPanel" ItemsSource="{Binding Terms}" SelectionMode="Single" SelectionChangedCommand="{Binding TermSelectedCommand}" SelectedItem="{Binding SelectedTerm}" Margin="15">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="5">
@@ -27,7 +47,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button Text="Press this" Command="{Binding AddNewTermCommand}">
+            <Button Text="Add New Term" BackgroundColor="#4486a1" FontSize="Medium" Command="{Binding AddNewTermCommand}" TextColor="#FFFFFF" CornerRadius="0">
 
             </Button>
         </StackLayout>

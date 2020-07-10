@@ -6,25 +6,27 @@ namespace AcademicTracker.Model
 {
     public class Assessment
     {
-        string Name { get; set; }
-        AssessmentType Type { get; set; }
-        AssessmentStatus Status { get; set; }
+        public string Name { get; set; }
+        public AssessmentType Type { get; set; }
+        public AssessmentStatus Status { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
 
-        Assessment(string name, AssessmentType type, AssessmentStatus status = AssessmentStatus.New)
+        public Assessment(string name, AssessmentType type, AssessmentStatus status = AssessmentStatus.New)
         {
-            this.Name = name;
-            this.Type = type;
-            this.Status = status;
+            Name = name;
+            Type = type;
+            Status = status;
         }
     }
 
-    internal enum AssessmentType
+    public enum AssessmentType
     {
         Objective = 0,
         Peformance = 1
     }
 
-    internal enum AssessmentStatus
+    public enum AssessmentStatus
     {
         New    = 0,
         Passed = 1,

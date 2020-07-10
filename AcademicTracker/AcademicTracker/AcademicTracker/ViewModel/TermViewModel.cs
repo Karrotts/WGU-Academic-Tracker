@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using AcademicTracker.View;
 using System.Collections.ObjectModel;
 using AcademicTracker.Model;
+using AcademicTracker.Test;
 
 namespace AcademicTracker.ViewModel
 {
@@ -19,15 +20,19 @@ namespace AcademicTracker.ViewModel
         {
             Terms = new ObservableCollection<Term>();
 
-            Terms.Add(new Term { Name = "Term 1 (Current)"});
-            Terms.Add(new Term { Name = "Term 2" });
-            Terms.Add(new Term { Name = "Term 3" });
-            Terms.Add(new Term { Name = "Term 4" });
-            Terms.Add(new Term { Name = "Term 5" });
-            Terms.Add(new Term { Name = "Term 6" });
-            Terms.Add(new Term { Name = "Term 7" });
+            // Generate generic test data
+            Terms.Add(DummyData.Generate());
+            Terms.Add(DummyData.Generate());
+            Terms.Add(DummyData.Generate());
+            Terms.Add(DummyData.Generate());
+            Terms.Add(DummyData.Generate());
+            Terms.Add(DummyData.Generate());
+            Terms.Add(DummyData.Generate());
 
-            TermSelectedCommand = new Command(async () => await Application.Current.MainPage.Navigation.PushAsync(new CourseView(new CourseViewModel { CurrentTerm = SelectedTerm })));
+            TermSelectedCommand = new Command(async () => {
+                if (SelectedTerm != null)
+                    await Application.Current.MainPage.Navigation.PushAsync(new CourseView(new CourseViewModel { CurrentTerm = SelectedTerm }));
+            });
             AddNewTermCommand = new Command(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new AddTermView()));
         }
 

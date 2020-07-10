@@ -21,5 +21,10 @@ namespace AcademicTracker.View
 
             BindingContext = new TermViewModel();
         }
+
+        public void CancelSelection(Object sender, EventArgs e)
+        {
+            collectionPanel.SelectedItem = null;
+        }
     }
 }

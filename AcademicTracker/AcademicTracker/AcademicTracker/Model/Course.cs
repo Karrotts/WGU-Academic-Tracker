@@ -4,20 +4,20 @@ using System.Text;
 
 namespace AcademicTracker.Model
 {
-    class Course
+    public class Course
     {
-        List<Assessment> Assessments { get; set; }
-        string Title { get; set; }
-        DateTime StartDate { get; set; }
-        DateTime EndDate { get; set; }
-        CourseStatus Status { get; set; }
-        string InstructorName { get; set; }
-        string InstructorEmail { get; set; }
-        string InstructorPhone { get; set; }
-        string Notes { get; set; }
+        public List<Assessment> Assessments = new List<Assessment>();
+        public string Title { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public CourseStatus Status { get; set; }
+        public string InstructorName { get; set; }
+        public string InstructorEmail { get; set; }
+        public string InstructorPhone { get; set; }
+        public string Notes { get; set; }
     }
 
-    internal enum CourseStatus
+    public enum CourseStatus
     {
         New        = 0,
         Inprogress = 1,
