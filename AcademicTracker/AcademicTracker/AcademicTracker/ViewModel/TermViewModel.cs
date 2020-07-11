@@ -21,13 +21,7 @@ namespace AcademicTracker.ViewModel
             Terms = new ObservableCollection<Term>();
 
             // Generate generic test data
-            Terms.Add(DummyData.Generate());
-            Terms.Add(DummyData.Generate());
-            Terms.Add(DummyData.Generate());
-            Terms.Add(DummyData.Generate());
-            Terms.Add(DummyData.Generate());
-            Terms.Add(DummyData.Generate());
-            Terms.Add(DummyData.Generate());
+            Terms.Add(DummyData.Generate("C971 - Mobile Application Development Using C#"));
 
             TermSelectedCommand = new Command(async () => {
                 if (SelectedTerm != null)

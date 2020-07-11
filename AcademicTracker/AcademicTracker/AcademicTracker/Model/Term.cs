@@ -10,6 +10,7 @@ namespace AcademicTracker.Model
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public string DateString { get { return DataHelper.FormatDate(StartDate, EndDate); } }
 
         public Term(string name, DateTime startDate, DateTime endDate)
         {

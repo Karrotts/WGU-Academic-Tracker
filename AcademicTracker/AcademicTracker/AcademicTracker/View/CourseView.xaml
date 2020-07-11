@@ -5,11 +5,51 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="AcademicTracker.View.CourseView">
+    <NavigationPage.TitleView>
+        <Label Text="{Binding TermTitle}" HorizontalOptions="Center" Margin="-70, 0, 0, 0" TextColor="White" FontSize="Title"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="WhiteSmoke" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding CurrentTerm.Name}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Spacing="0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,-5,0,-5" Spacing="0">
+                <Button Text="Edit Term" BackgroundColor="#0066a2" HorizontalOptions="FillAndExpand" Margin="0" CornerRadius="0" TextColor="#FFFFFF"/>
+                <Button Text="Delete Term" BackgroundColor="#0066a2" HorizontalOptions="FillAndExpand" Margin="0" CornerRadius="0" TextColor="#FFFFFF" />
+            </StackLayout>
+            <Label Text="COURSES" BackgroundColor="#e9e6d9" Padding="13, 10, 10, 10" FontSize="Title"/>
+            <CollectionView x:Name="collectionPanel" SelectionMode="Single" Margin="15" SelectionChanged="CancelSelection">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="5">
+                            <Frame BorderColor="#D4D4D4" Padding="20, 10, 20, 15" VerticalOptions="CenterAndExpand" Margin="5, 0, 5, 0">
+                                <StackLayout Spacing="0">
+                                    <Label Text="{Binding Status}" TextColor="LightGray" Margin="0"/>
+                                    <StackLayout>
+                                        <Label Text="{Binding Title}" FontSize="Medium"/>
+                                        <Label Text="{Binding DateString}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="Add Course" BackgroundColor="#4486a1" FontSize="Medium" TextColor="#FFFFFF" CornerRadius="0"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

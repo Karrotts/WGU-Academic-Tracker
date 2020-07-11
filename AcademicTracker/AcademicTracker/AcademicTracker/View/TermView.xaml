@@ -14,7 +14,7 @@
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
                                 <Setter Property="BackgroundColor"
-                                        Value="LightSkyBlue" />
+                                        Value="WhiteSmoke" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -23,23 +23,21 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
+        
         <StackLayout x:Name="panel" Spacing="0">
-            <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Tapped="CancelSelection" NumberOfTapsRequired="1" />
-            </StackLayout.GestureRecognizers>
             <Frame BackgroundColor="#0066a2" CornerRadius="0">
                 <Image Source="WGU.png" HeightRequest="50"/>
             </Frame>
             <Label Text="&#x1f393; DEGREE PLAN" BackgroundColor="#e9e6d9" Padding="13, 10, 10, 10" FontSize="Title"/>
 
-            <CollectionView x:Name="collectionPanel" ItemsSource="{Binding Terms}" SelectionMode="Single" SelectionChangedCommand="{Binding TermSelectedCommand}" SelectedItem="{Binding SelectedTerm}" Margin="15">
+            <CollectionView x:Name="collectionPanel" ItemsSource="{Binding Terms}" SelectionMode="Single" SelectionChangedCommand="{Binding TermSelectedCommand}" SelectedItem="{Binding SelectedTerm}" SelectionChanged="CancelSelection" Margin="15">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="5">
-                            <Frame BorderColor="#D4D4D4" Padding="20">
+                            <Frame BorderColor="#D4D4D4" Padding="20" VerticalOptions="CenterAndExpand" Margin="5, 0, 5, 0">
                                 <StackLayout>
                                     <Label Text="{Binding Name}" Padding="0" FontSize="Medium"/>
-                                    <Label Text="April 1, 2020 to September 1, 2020" />
+                                    <Label Text="{Binding DateString}" />
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
@@ -47,9 +45,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button Text="Add New Term" BackgroundColor="#4486a1" FontSize="Medium" Command="{Binding AddNewTermCommand}" TextColor="#FFFFFF" CornerRadius="0">
-
-            </Button>
+            <Button Text="New Term" BackgroundColor="#4486a1" FontSize="Medium" Command="{Binding AddNewTermCommand}" TextColor="#FFFFFF" CornerRadius="0" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

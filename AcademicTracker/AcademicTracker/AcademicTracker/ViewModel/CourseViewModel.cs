@@ -17,10 +17,17 @@ namespace AcademicTracker.ViewModel
     {
         public CourseViewModel()
         {
-
+            CourseSelectedCommand = new Command(async () => {
+                if (SelectedCourse != null)
+                    await Application.Current.MainPage.Navigation.PushAsync();
+            });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public Term CurrentTerm { get; set; }
+        public Course SelectedCourse { get; set; }
+        public string TermTitle { get { return DataHelper.TitleLimitor(CurrentTerm.Name, 25); } }
+
+        public Command CourseSelectedCommand { get; }
     }
 }

@@ -15,6 +15,7 @@ namespace AcademicTracker.Model
         public string InstructorEmail { get; set; }
         public string InstructorPhone { get; set; }
         public string Notes { get; set; }
+        public string DateString { get { return DataHelper.FormatDate(StartDate, EndDate); } }
     }
 
     public enum CourseStatus

@@ -17,6 +17,12 @@ namespace AcademicTracker.View
         {
             InitializeComponent();
             BindingContext = courseViewModel;
+            collectionPanel.ItemsSource = courseViewModel.CurrentTerm.Courses;
+        }
+
+        public void CancelSelection(Object sender, EventArgs e)
+        {
+            collectionPanel.SelectedItem = null;
         }
     }
 }
