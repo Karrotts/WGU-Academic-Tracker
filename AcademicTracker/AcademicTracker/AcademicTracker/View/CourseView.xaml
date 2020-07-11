@@ -32,7 +32,7 @@
                 <Button Text="Delete Term" BackgroundColor="#0066a2" HorizontalOptions="FillAndExpand" Margin="0" CornerRadius="0" TextColor="#FFFFFF" />
             </StackLayout>
             <Label Text="COURSES" BackgroundColor="#e9e6d9" Padding="13, 10, 10, 10" FontSize="Title"/>
-            <CollectionView x:Name="collectionPanel" SelectionMode="Single" Margin="15" SelectionChanged="CancelSelection">
+            <CollectionView x:Name="collectionPanel" Margin="15" SelectionMode="Single" SelectionChangedCommand="{Binding CourseSelectedCommand}" SelectedItem="{Binding SelectedCourse}" SelectionChanged="CancelSelection">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="5">

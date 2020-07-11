@@ -19,14 +19,14 @@ namespace AcademicTracker.ViewModel
         {
             CourseSelectedCommand = new Command(async () => {
                 if (SelectedCourse != null)
-                    await Application.Current.MainPage.Navigation.PushAsync();
+                    await Application.Current.MainPage.Navigation.PushAsync(new CourseDetailView(new CourseDetailViewModel() { CurrentTerm = this.CurrentTerm, CurrentCourse = SelectedCourse }));
             });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public Term CurrentTerm { get; set; }
         public Course SelectedCourse { get; set; }
-        public string TermTitle { get { return DataHelper.TitleLimitor(CurrentTerm.Name, 25); } }
+        public string TermTitle { get { return DataHelper.TitleLimitor(CurrentTerm.Name, 20); } }
 
         public Command CourseSelectedCommand { get; }
     }
