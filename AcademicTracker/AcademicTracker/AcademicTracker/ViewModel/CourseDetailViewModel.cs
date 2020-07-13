@@ -25,6 +25,10 @@ namespace AcademicTracker.ViewModel
                     await Application.Current.MainPage.Navigation.PopAsync();
                 }
             });
+
+            CourseEditCommand = new Command(async () => {
+                await Application.Current.MainPage.Navigation.PushModalAsync(new CourseEditView());
+            });
         }
 
         public async Task ShareText()
@@ -44,5 +48,6 @@ namespace AcademicTracker.ViewModel
         public Command ShareCommand { get; }
         public Command AssessmentDetailsCommand { get; }
         public Command CourseDeleteCommand { get; }
+        public Command CourseEditCommand { get; }
     }
 }

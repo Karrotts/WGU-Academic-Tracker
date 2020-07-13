@@ -22,6 +22,10 @@ namespace AcademicTracker.ViewModel
                     await Application.Current.MainPage.Navigation.PopAsync();
                 }
             });
+
+            AssessmentEditCommand = new Command(async () => {
+                await Application.Current.MainPage.Navigation.PushModalAsync(new AssessmentEditView());
+            });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -29,5 +33,6 @@ namespace AcademicTracker.ViewModel
         public Course CurrentCourse { get; set; }
 
         public Command AssessmentDeleteCommand { get; }
+        public Command AssessmentEditCommand { get; }
     }
 }

@@ -28,7 +28,7 @@
     <ContentPage.Content>
         <StackLayout Spacing="0">
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,-5,0,-5" Spacing="0">
-                <Button Text="Edit Term" BackgroundColor="#0066a2" HorizontalOptions="FillAndExpand" Margin="0" CornerRadius="0" TextColor="#FFFFFF"/>
+                <Button Text="Edit Term"  Command="{Binding TermEditCommand}" BackgroundColor="#0066a2" HorizontalOptions="FillAndExpand" Margin="0" CornerRadius="0" TextColor="#FFFFFF"/>
                 <Button Text="Delete Term" Command="{Binding TermDeleteCommand}" BackgroundColor="#0066a2" HorizontalOptions="FillAndExpand" Margin="0" CornerRadius="0" TextColor="#FFFFFF" />
             </StackLayout>
             <Label Text="COURSES" BackgroundColor="#e9e6d9" Padding="13, 10, 10, 10" FontSize="Title"/>
@@ -49,7 +49,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button Text="Add Course" BackgroundColor="#4486a1" FontSize="Medium" TextColor="#FFFFFF" CornerRadius="0"/>
+            <Button Text="Add Course" Command="{Binding CourseAddCommand}" BackgroundColor="#4486a1" FontSize="Medium" TextColor="#FFFFFF" CornerRadius="0"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

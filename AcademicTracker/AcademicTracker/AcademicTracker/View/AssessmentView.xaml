@@ -68,7 +68,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button Text="Add Assessment" BackgroundColor="#4486a1" FontSize="Medium" TextColor="#FFFFFF" CornerRadius="0" />
+            <Button Text="Add Assessment" Command="{Binding AssessmentAddCommand}" BackgroundColor="#4486a1" FontSize="Medium" TextColor="#FFFFFF" CornerRadius="0" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

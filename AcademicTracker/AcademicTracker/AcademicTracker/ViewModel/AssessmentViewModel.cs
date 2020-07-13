@@ -21,11 +21,17 @@ namespace AcademicTracker.ViewModel
                 if (SelectedAssessment != null)
                     await Application.Current.MainPage.Navigation.PushAsync(new AssessmentDetailView(new AssessmentDetailViewModel() { CurrentCourse = CurrentCourse, CurrentAssessment = SelectedAssessment }));
             });
+
+            AssessmentAddCommand = new Command(async () =>
+            {
+                await Application.Current.MainPage.Navigation.PushModalAsync(new AssessmentAddView());
+            });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public Course CurrentCourse { get; set; }
         public Assessment SelectedAssessment { get; set; }
         public Command AssessmentSelectedCommand { get; }
+        public Command AssessmentAddCommand { get;  }
     }
 }

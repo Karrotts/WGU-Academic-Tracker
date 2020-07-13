@@ -22,6 +22,11 @@ namespace AcademicTracker.ViewModel
                     await Application.Current.MainPage.Navigation.PushAsync(new CourseDetailView(new CourseDetailViewModel() { CurrentTerm = this.CurrentTerm, CurrentCourse = this.SelectedCourse }));
             });
 
+            CourseAddCommand = new Command(async () =>
+            {
+                await Application.Current.MainPage.Navigation.PushModalAsync(new CourseAddView());
+            });
+
             TermDeleteCommand = new Command(async () =>
             {
                 if (await Application.Current.MainPage.DisplayAlert("Warning", "Are you sure you want to delete this term?", "Yes", "No"))
@@ -29,6 +34,10 @@ namespace AcademicTracker.ViewModel
                     TermList.Remove(CurrentTerm);
                     await Application.Current.MainPage.Navigation.PopAsync();
                 }
+            });
+
+            TermEditCommand = new Command(async () => {
+                await Application.Current.MainPage.Navigation.PushModalAsync(new TermEditView());
             });
         }
 
@@ -39,6 +48,8 @@ namespace AcademicTracker.ViewModel
         public string TermTitle { get { return DataHelper.TitleLimitor(CurrentTerm.Name, 20); } }
 
         public Command CourseSelectedCommand { get; }
+        public Command CourseAddCommand { get; }
         public Command TermDeleteCommand { get; }
+        public Command TermEditCommand { get; }
     }
 }
