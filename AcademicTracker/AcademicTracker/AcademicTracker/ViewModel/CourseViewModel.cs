@@ -19,7 +19,7 @@ namespace AcademicTracker.ViewModel
         {
             CourseSelectedCommand = new Command(async () => {
                 if (SelectedCourse != null)
-                    await Application.Current.MainPage.Navigation.PushAsync(new CourseDetailView(new CourseDetailViewModel() { CurrentTerm = this.CurrentTerm, CurrentCourse = SelectedCourse }));
+                    await Application.Current.MainPage.Navigation.PushAsync(new CourseDetailView(new CourseDetailViewModel() { CurrentTerm = this.CurrentTerm, CurrentCourse = this.SelectedCourse }));
             });
 
             TermDeleteCommand = new Command(async () =>

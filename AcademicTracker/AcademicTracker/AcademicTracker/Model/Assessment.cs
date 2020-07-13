@@ -11,7 +11,10 @@ namespace AcademicTracker.Model
         public AssessmentStatus Status { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public bool Notifications { get; set; }
         public string DateString { get { return DataHelper.FormatDate(StartDate, EndDate); } }
+        public string AssessmentCommonName { get { return Type.ToString() + " Assessment"; } }
+        public string AssessmentLongName { get { return AssessmentCommonName + ": " + Name; } }
 
         public Assessment(string name, AssessmentType type, AssessmentStatus status = AssessmentStatus.New)
         {

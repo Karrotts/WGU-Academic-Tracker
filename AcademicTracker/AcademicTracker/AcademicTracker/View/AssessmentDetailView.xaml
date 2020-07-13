@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AcademicTracker.View.AssessmentDetailView">
+    <NavigationPage.TitleView>
+        <Label Text="{Binding CurrentAssessment.AssessmentCommonName}" HorizontalOptions="Center" Margin="-60, 0, 0, 0" TextColor="White" FontSize="Title"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,-5,0,-5" Spacing="0">
+                <Button Text="Edit Assessment" BackgroundColor="#0066a2" HorizontalOptions="FillAndExpand" Margin="0" CornerRadius="0" TextColor="#FFFFFF"/>
+                <Button Text="Delete Assessment" Command="{Binding AssessmentDeleteCommand}" BackgroundColor="#0066a2" HorizontalOptions="FillAndExpand" Margin="0" CornerRadius="0" TextColor="#FFFFFF" />
+            </StackLayout>
+            <Label Text="ASSESSMENT DETAILS" BackgroundColor="#e9e6d9" Padding="13, 10, 10, 10" FontSize="Title"/>
+            <Frame Margin="10" Padding="0">
+                <StackLayout Spacing="10" Padding="0">
+                    <StackLayout Orientation="Horizontal" Spacing="0" Padding="10, 20, 10, 10">
+                        <Label Text="Assessment Name: " FontSize="Medium"/>
+                        <Label Text="{Binding CurrentAssessment.Name}" FontSize="Medium"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="0" BackgroundColor="WhiteSmoke" Padding="10, 20, 10, 20">
+                        <Label Text="Assessment Type: " FontSize="Medium"/>
+                        <Label Text="{Binding CurrentAssessment.AssessmentCommonName}" FontSize="Medium"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="0" Padding="10">
+                        <Label Text="Assessment Status: " FontSize="Medium"/>
+                        <Label Text="{Binding CurrentAssessment.Status}" FontSize="Medium"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="0" BackgroundColor="WhiteSmoke" Padding="10, 20, 10, 20">
+                        <Label Text="Assessment Start Date: " FontSize="Medium"/>
+                        <Label Text="{Binding CurrentAssessment.StartDate, StringFormat='{0:MM/dd/yyyy}'}" FontSize="Medium"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="0" Padding="10">
+                        <Label Text="Assessment End Date: " FontSize="Medium"/>
+                        <Label Text="{Binding CurrentAssessment.EndDate, StringFormat='{0:MM/dd/yyyy}'}" FontSize="Medium"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="0" BackgroundColor="WhiteSmoke" Padding="10, 20, 10, 20">
+                        <Label Text="Notifications Enabled: " FontSize="Medium"/>
+                        <Label Text="{Binding CurrentAssessment.Notifications}" FontSize="Medium"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

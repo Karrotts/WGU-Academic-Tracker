@@ -15,7 +15,7 @@ namespace AcademicTracker.ViewModel
         public CourseDetailViewModel()
         {
             ShareCommand = new Command(async () => await ShareText());
-            AssessmentDetailsCommand = new Command(async () => await Application.Current.MainPage.Navigation.PushAsync(new AssessmentView()));
+            AssessmentDetailsCommand = new Command(async () => await Application.Current.MainPage.Navigation.PushAsync(new AssessmentView(new AssessmentViewModel() { CurrentCourse = this.CurrentCourse })));
 
             CourseDeleteCommand = new Command(async () =>
             {

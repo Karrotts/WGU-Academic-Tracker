@@ -76,7 +76,7 @@
                                 </StackLayout>
                             </Frame>
                             <Frame BackgroundColor="White" Margin="0" VerticalOptions="StartAndExpand" Padding="10, 10, 10, 10">
-                                <StackLayout x:Name="assessmentPanel" BindableLayout.ItemsSource="{Binding CurrentCourse.Assessments}">
+                                <StackLayout x:Name="assessmentPanel">
                                     <BindableLayout.ItemTemplate>
                                         <DataTemplate>
                                             <Frame BorderColor="LightGray" Padding="0">

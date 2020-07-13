@@ -28,32 +28,35 @@
     <ContentPage.Content>
         <StackLayout Spacing="0">
             <Label Text="OVERVIEW" BackgroundColor="#e9e6d9" Padding="13, 10, 10, 10" FontSize="Title"/>
-            <CollectionView x:Name="collectionView" SelectionMode="Single" VerticalOptions="StartAndExpand">
+            <CollectionView x:Name="collectionView" SelectionMode="Single" VerticalOptions="StartAndExpand" SelectionChangedCommand="{Binding AssessmentSelectedCommand}" SelectedItem="{Binding SelectedAssessment}" SelectionChanged="CancelSelection">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        
+
                         <StackLayout Spacing="0" Margin="0">
                             <Frame Margin="10" Padding="0">
                                 <StackLayout Spacing="0" Margin="0">
                                     <Frame BackgroundColor="#82bcd4" Margin="0" VerticalOptions="StartAndExpand" Padding="20, 10, 0, 10">
-                                        <Label Text="Performance Assessment" FontSize="Large" TextColor="White" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding AssessmentCommonName}" FontSize="Large" TextColor="White" HorizontalOptions="FillAndExpand"/>
+                                            <Label Text="DETAILS" FontSize="Small" VerticalOptions="Center" TextColor="#0066a2" Padding="0, 0, 15, 0"/>
+                                        </StackLayout>
                                     </Frame>
                                     <Frame BackgroundColor="White" Margin="0" VerticalOptions="StartAndExpand" Padding="10, 10, 10, 10">
                                         <StackLayout>
-                                            <Label Text="Performance Assessment: Mobile Application Development" FontSize="Medium" />
+                                            <Label Text="{Binding AssessmentLongName}" FontSize="Medium" />
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="Assessment Type:" />
-                                                <Label Text="Performance" />
+                                                <Label Text="{Binding Type}" />
                                             </StackLayout>
-                                            <Label Text="April 1, 2020 to April 1, 2020" FontSize="Small" />
+                                            <Label Text="{Binding DateString}" FontSize="Small" />
                                             <StackLayout Orientation="Horizontal">
                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                                     <Label Text="Status:" FontSize="Small" />
-                                                    <Label Text="New" FontSize="Small" />
+                                                    <Label Text="{Binding Status}" FontSize="Small" />
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal">
                                                     <Label Text="Notifications Enabled:" FontSize="Small" HorizontalOptions="CenterAndExpand"/>
-                                                    <Label  Text="True" FontSize="Small" />
+                                                    <Label  Text="{Binding Notifications}" FontSize="Small" />
                                                 </StackLayout>
                                             </StackLayout>
                                         </StackLayout>
