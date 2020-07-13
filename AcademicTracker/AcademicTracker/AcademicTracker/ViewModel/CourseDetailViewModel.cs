@@ -16,6 +16,15 @@ namespace AcademicTracker.ViewModel
         {
             ShareCommand = new Command(async () => await ShareText());
             AssessmentDetailsCommand = new Command(async () => await Application.Current.MainPage.Navigation.PushAsync(new AssessmentView()));
+
+            CourseDeleteCommand = new Command(async () =>
+            {
+                if (await Application.Current.MainPage.DisplayAlert("Warning", "Are you sure you want to delete this course?", "Yes", "No"))
+                {
+                    CurrentTerm.Courses.Remove(CurrentCourse);
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                }
+            });
         }
 
         public async Task ShareText()
@@ -34,5 +43,6 @@ namespace AcademicTracker.ViewModel
         
         public Command ShareCommand { get; }
         public Command AssessmentDetailsCommand { get; }
+        public Command CourseDeleteCommand { get; }
     }
 }

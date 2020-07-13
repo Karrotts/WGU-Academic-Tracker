@@ -5,20 +5,67 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="AcademicTracker.View.AssessmentView">
+    <NavigationPage.TitleView>
+        <Label Text="Assessments" HorizontalOptions="Center" Margin="-70, 0, 0, 0" TextColor="White" FontSize="Title"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="WhiteSmoke" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <CollectionView x:Name="collectionView" SelectionMode="Single">
+        <StackLayout Spacing="0">
+            <Label Text="OVERVIEW" BackgroundColor="#e9e6d9" Padding="13, 10, 10, 10" FontSize="Title"/>
+            <CollectionView x:Name="collectionView" SelectionMode="Single" VerticalOptions="StartAndExpand">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
-                            <Label Text="Hello World" />
+                        
+                        <StackLayout Spacing="0" Margin="0">
+                            <Frame Margin="10" Padding="0">
+                                <StackLayout Spacing="0" Margin="0">
+                                    <Frame BackgroundColor="#82bcd4" Margin="0" VerticalOptions="StartAndExpand" Padding="20, 10, 0, 10">
+                                        <Label Text="Performance Assessment" FontSize="Large" TextColor="White" />
+                                    </Frame>
+                                    <Frame BackgroundColor="White" Margin="0" VerticalOptions="StartAndExpand" Padding="10, 10, 10, 10">
+                                        <StackLayout>
+                                            <Label Text="Performance Assessment: Mobile Application Development" FontSize="Medium" />
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Assessment Type:" />
+                                                <Label Text="Performance" />
+                                            </StackLayout>
+                                            <Label Text="April 1, 2020 to April 1, 2020" FontSize="Small" />
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                    <Label Text="Status:" FontSize="Small" />
+                                                    <Label Text="New" FontSize="Small" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Notifications Enabled:" FontSize="Small" HorizontalOptions="CenterAndExpand"/>
+                                                    <Label  Text="True" FontSize="Small" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </Frame>
                         </StackLayout>
+
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <Button Text="Add Assessment" BackgroundColor="#4486a1" FontSize="Medium" TextColor="#FFFFFF" CornerRadius="0" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

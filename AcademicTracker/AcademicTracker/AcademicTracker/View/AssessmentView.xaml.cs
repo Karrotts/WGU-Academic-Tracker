@@ -21,5 +21,10 @@ namespace AcademicTracker.View
 
             collectionView.ItemsSource = terms;
         }
+
+        public void CancelSelection(Object sender, EventArgs e)
+        {
+            collectionView.SelectedItem = null;
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace AcademicTracker.ViewModel
 
             TermSelectedCommand = new Command(async () => {
                 if (SelectedTerm != null)
-                    await Application.Current.MainPage.Navigation.PushAsync(new CourseView(new CourseViewModel { CurrentTerm = SelectedTerm }));
+                    await Application.Current.MainPage.Navigation.PushAsync(new CourseView(new CourseViewModel { CurrentTerm = SelectedTerm, TermList = Terms }));
             });
             AddNewTermCommand = new Command(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new AddTermView()));
         }

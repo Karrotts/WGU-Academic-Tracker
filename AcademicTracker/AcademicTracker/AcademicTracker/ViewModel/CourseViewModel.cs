@@ -21,13 +21,24 @@ namespace AcademicTracker.ViewModel
                 if (SelectedCourse != null)
                     await Application.Current.MainPage.Navigation.PushAsync(new CourseDetailView(new CourseDetailViewModel() { CurrentTerm = this.CurrentTerm, CurrentCourse = SelectedCourse }));
             });
+
+            TermDeleteCommand = new Command(async () =>
+            {
+                if (await Application.Current.MainPage.DisplayAlert("Warning", "Are you sure you want to delete this term?", "Yes", "No"))
+                {
+                    TermList.Remove(CurrentTerm);
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                }
+            });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<Term> TermList { get; set; }
         public Term CurrentTerm { get; set; }
         public Course SelectedCourse { get; set; }
         public string TermTitle { get { return DataHelper.TitleLimitor(CurrentTerm.Name, 20); } }
 
         public Command CourseSelectedCommand { get; }
+        public Command TermDeleteCommand { get; }
     }
 }

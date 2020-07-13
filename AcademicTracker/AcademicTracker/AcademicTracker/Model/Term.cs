@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace AcademicTracker.Model
 {
     public class Term
     {
-        public List<Course> Courses = new List<Course>();
+        public ObservableCollection<Course> Courses = new ObservableCollection<Course>();
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
