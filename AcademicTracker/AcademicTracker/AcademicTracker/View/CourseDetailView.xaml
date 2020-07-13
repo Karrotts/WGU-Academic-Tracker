@@ -15,25 +15,29 @@
                 <Button Text="Delete Course" BackgroundColor="#0066a2" HorizontalOptions="FillAndExpand" Margin="0" CornerRadius="0" TextColor="#FFFFFF" />
             </StackLayout>
             <Label Text="COURSE DETAILS" BackgroundColor="#e9e6d9" Padding="13, 10, 10, 10" FontSize="Title"/>
+            
             <ScrollView>
                 <StackLayout Spacing="0">
+                    
                     <Frame Margin="10, 20, 10, 10" Padding="0">
                         <StackLayout Spacing="0" Margin="0">
                             <Frame BackgroundColor="#82bcd4" Margin="0" VerticalOptions="StartAndExpand" Padding="20, 10, 20, 10">
-                                <Label Text="Details" FontSize="Large" TextColor="White"></Label>
+                                <Label Text="Details" FontSize="Large" TextColor="White" />
                             </Frame>
                             <Frame BackgroundColor="White" Margin="0" VerticalOptions="StartAndExpand" Padding="20, 10, 20, 10">
                                 <StackLayout>
-                                    <Label Text="{Binding CurrentCourse.Title}" FontSize="Medium"></Label>
+                                    <Label Text="{Binding CurrentCourse.Title}" FontSize="Medium" />
+                                    <Label Text="{Binding CurrentCourse.DateString}" FontSize="Small" />
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Start Date: April 1, 2020" FontSize="Small" HorizontalOptions="FillAndExpand"></Label>
-                                        <Label Text="End Date: April 2, 2020" FontSize="Small" HorizontalOptions="FillAndExpand"></Label>
+                                        <Label Text="Notifications:" FontSize="Small" />
+                                        <Label x:Name="notificationText" Text="{Binding CurrentCourse.Notifications}" FontSize="Small" />
                                     </StackLayout>
-                                    <Label Text="Notifications: Enabled" FontSize="Small"></Label>
+                                    <Label Text="{Binding CurrentCourse.Status}" />
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
                     </Frame>
+                    
                     <Frame Margin="10" Padding="0">
                         <StackLayout Spacing="0" Margin="0">
                             <Frame BackgroundColor="#82bcd4" Margin="0" VerticalOptions="StartAndExpand" Padding="20, 10, 20, 10">
@@ -57,27 +61,38 @@
                             </Frame>
                         </StackLayout>
                     </Frame>
+                    
                     <Frame Margin="10" Padding="0">
                         <StackLayout Spacing="0" Margin="0">
                             <Frame BackgroundColor="#82bcd4" Margin="0" VerticalOptions="StartAndExpand" Padding="20, 10, 20, 10">
                                 <StackLayout Orientation="Horizontal" Spacing="0">
                                     <Label Text="Assessments" FontSize="Large" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Label>
-                                    <Button Text="Edit" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="#0066a2" Margin="-10"/>
+                                    <Button Text="Details" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="#0066a2" Margin="-10" Command="{Binding AssessmentDetailsCommand}"/>
                                 </StackLayout>
                             </Frame>
-                            <Frame BackgroundColor="White" Margin="0" VerticalOptions="StartAndExpand" Padding="20, 10, 20, 10">
-                                <StackLayout>
-                                    <Label Text="No Assessments for this Course"/>
+                            <Frame BackgroundColor="White" Margin="0" VerticalOptions="StartAndExpand" Padding="10, 10, 10, 10">
+                                <StackLayout x:Name="assessmentPanel" BindableLayout.ItemsSource="{Binding CurrentCourse.Assessments}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Frame BorderColor="LightGray" Padding="0">
+                                                <StackLayout Spacing="2">
+                                                    <Label Text="{Binding Status}" TextColor="LightGray" FontSize="Small" Padding="15, 10, 0, 0"/>
+                                                    <Label Text="{Binding Name}" FontSize="Small" Padding="15, 0, 10, 15"/>
+                                                </StackLayout>
+                                            </Frame>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
                     </Frame>
+                    
                     <Frame Margin="10" Padding="0">
                         <StackLayout Spacing="0" Margin="0">
                             <Frame BackgroundColor="#82bcd4" Margin="0" VerticalOptions="StartAndExpand" Padding="20, 10, 20, 10">
                                 <StackLayout Orientation="Horizontal" Spacing="0">
                                     <Label Text="Course Notes" FontSize="Large" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Label>
-                                    <Button Text="Share" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="#0066a2" Margin="-10"/>
+                                    <Button Text="Share" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="#0066a2" Margin="-10" Command="{Binding ShareCommand}"/>
                                 </StackLayout>
                             </Frame>
                             <Frame BackgroundColor="White" Margin="0" VerticalOptions="StartAndExpand" Padding="20, 10, 20, 10">
@@ -87,6 +102,7 @@
                             </Frame>
                         </StackLayout>
                     </Frame>
+                    
                 </StackLayout>
             </ScrollView>
         </StackLayout>

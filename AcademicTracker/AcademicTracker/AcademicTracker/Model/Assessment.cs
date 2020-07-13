@@ -11,6 +11,7 @@ namespace AcademicTracker.Model
         public AssessmentStatus Status { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public string DateString { get { return DataHelper.FormatDate(StartDate, EndDate); } }
 
         public Assessment(string name, AssessmentType type, AssessmentStatus status = AssessmentStatus.New)
         {
@@ -22,7 +23,7 @@ namespace AcademicTracker.Model
 
     public enum AssessmentType
     {
-        Objective = 0,
+        Objective  = 0,
         Peformance = 1
     }
 

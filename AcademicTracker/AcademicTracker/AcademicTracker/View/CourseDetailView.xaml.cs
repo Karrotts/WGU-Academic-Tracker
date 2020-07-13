@@ -17,6 +17,8 @@ namespace AcademicTracker.View
         {
             InitializeComponent();
             BindingContext = courseDetailViewModel;
+
+            BindableLayout.SetItemsSource(assessmentPanel, courseDetailViewModel.CurrentCourse.Assessments);
         }
     }
 }

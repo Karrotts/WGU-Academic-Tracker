@@ -11,6 +11,7 @@ namespace AcademicTracker.Model
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public CourseStatus Status { get; set; }
+        public bool Notifications { get; set; }
         public string InstructorName { get; set; }
         public string InstructorEmail { get; set; }
         public string InstructorPhone { get; set; }

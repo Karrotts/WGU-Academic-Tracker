@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AcademicTracker.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,10 @@ namespace AcademicTracker.View
         public AssessmentView()
         {
             InitializeComponent();
+
+            List<Term> terms = new List<Term> { new Term("test", DateTime.Now, DateTime.Now), new Term("test", DateTime.Now, DateTime.Now) };
+
+            collectionView.ItemsSource = terms;
         }
     }
 }
