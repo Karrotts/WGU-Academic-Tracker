@@ -17,9 +17,11 @@ namespace AcademicTracker.View
         public TermView()
         {
             InitializeComponent();
+            DataHelper.Initalize();
             NavigationPage.SetHasNavigationBar(this, false);
 
             BindingContext = new TermViewModel();
+            collectionPanel.ItemsSource = DataHelper.DataStore;
         }
 
         public void CancelSelection(Object sender, EventArgs e)

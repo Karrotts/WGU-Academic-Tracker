@@ -30,7 +30,7 @@
             </Frame>
             <Label Text="&#x1f393; DEGREE PLAN" BackgroundColor="#e9e6d9" Padding="13, 10, 10, 10" FontSize="Title"/>
 
-            <CollectionView x:Name="collectionPanel" ItemsSource="{Binding Terms}" SelectionMode="Single" SelectionChangedCommand="{Binding TermSelectedCommand}" SelectedItem="{Binding SelectedTerm}" SelectionChanged="CancelSelection" Margin="15">
+            <CollectionView x:Name="collectionPanel" SelectionMode="Single" SelectionChangedCommand="{Binding TermSelectedCommand}" SelectedItem="{Binding SelectedTerm}" SelectionChanged="CancelSelection" Margin="15">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="5">

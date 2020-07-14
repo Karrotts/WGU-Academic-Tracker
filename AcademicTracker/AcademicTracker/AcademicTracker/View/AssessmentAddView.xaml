@@ -6,10 +6,33 @@
              mc:Ignorable="d"
              x:Class="AcademicTracker.View.AssessmentAddView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Assessment Add View"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout x:Name="panel" Spacing="0">
+            <Frame BackgroundColor="#0066a2" CornerRadius="0">
+                <Image Source="WGU.png" HeightRequest="50"/>
+            </Frame>
+            <Label Text="NEW TERM" BackgroundColor="#e9e6d9" Padding="13, 10, 10, 10" FontSize="Title"/>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Frame Margin="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Term Name: " VerticalOptions="Center"/>
+                        <Entry Grid.Column="1" VerticalOptions="Center"/>
+                        <Label Text="Start Date: " Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
+                        <DatePicker Grid.Row="1" Grid.Column="1" />
+                        <Label Text="End Date: " Grid.Row="2" Grid.Column="0" VerticalOptions="Center"/>
+                        <DatePicker Grid.Row="2" Grid.Column="1" />
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            <Button Text="Create Term" BackgroundColor="#4486a1" FontSize="Medium" Command="{Binding AddNewTermCommand}" TextColor="#FFFFFF" CornerRadius="0" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

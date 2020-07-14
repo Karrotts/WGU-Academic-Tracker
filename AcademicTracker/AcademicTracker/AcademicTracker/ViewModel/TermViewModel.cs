@@ -18,21 +18,14 @@ namespace AcademicTracker.ViewModel
     {
         public TermViewModel()
         {
-            Terms = new ObservableCollection<Term>();
-
-            // Generate generic test data
-            Terms.Add(DummyData.Generate("Term 1 (Current)"));
-
             TermSelectedCommand = new Command(async () => {
                 if (SelectedTerm != null)
-                    await Application.Current.MainPage.Navigation.PushAsync(new CourseView(new CourseViewModel { CurrentTerm = SelectedTerm, TermList = Terms }));
+                    await Application.Current.MainPage.Navigation.PushAsync(new CourseView(new CourseViewModel { CurrentTerm = SelectedTerm, TermList = DataHelper.DataStore }));
             });
             AddNewTermCommand = new Command(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new TermAddView()));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        
-        public ObservableCollection<Term> Terms { get; }
         public Term SelectedTerm { get; set; }
 
         public Command TermSelectedCommand { get; }

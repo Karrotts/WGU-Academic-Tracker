@@ -21,7 +21,7 @@ namespace AcademicTracker.ViewModel
             {
                 if (await Application.Current.MainPage.DisplayAlert("Warning", "Are you sure you want to delete this course?", "Yes", "No"))
                 {
-                    CurrentTerm.Courses.Remove(CurrentCourse);
+                    DataHelper.DeleteCourse(CurrentCourse, CurrentTerm);
                     await Application.Current.MainPage.Navigation.PopAsync();
                 }
             });

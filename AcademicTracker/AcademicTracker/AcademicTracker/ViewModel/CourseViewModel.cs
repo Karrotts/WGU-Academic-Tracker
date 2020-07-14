@@ -31,7 +31,7 @@ namespace AcademicTracker.ViewModel
             {
                 if (await Application.Current.MainPage.DisplayAlert("Warning", "Are you sure you want to delete this term?", "Yes", "No"))
                 {
-                    TermList.Remove(CurrentTerm);
+                    DataHelper.DeleteTerm(CurrentTerm);
                     await Application.Current.MainPage.Navigation.PopAsync();
                 }
             });

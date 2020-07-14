@@ -18,7 +18,7 @@ namespace AcademicTracker.ViewModel
             {
                 if (await Application.Current.MainPage.DisplayAlert("Warning", "Are you sure you want to delete this assessment?", "Yes", "No"))
                 {
-                    CurrentCourse.Assessments.Remove(CurrentAssessment);
+                    DataHelper.DeleteAssessment(CurrentAssessment, CurrentCourse);
                     await Application.Current.MainPage.Navigation.PopAsync();
                 }
             });
