@@ -22,7 +22,7 @@ namespace AcademicTracker.ViewModel
                 if (SelectedTerm != null)
                     await Application.Current.MainPage.Navigation.PushAsync(new CourseView(new CourseViewModel { CurrentTerm = SelectedTerm, TermList = DataHelper.DataStore }));
             });
-            AddNewTermCommand = new Command(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new TermAddView()));
+            AddNewTermCommand = new Command(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new TermAddView(new TermAddViewModel())));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
