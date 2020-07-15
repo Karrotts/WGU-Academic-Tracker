@@ -8,15 +8,12 @@ using Xamarin.Forms;
 
 namespace AcademicTracker.ViewModel
 {
-    public class TermAddViewModel : INotifyPropertyChanged
+    public class TermEditViewModel : INotifyPropertyChanged
     {
-        public TermAddViewModel()
+        public TermEditViewModel()
         {
-            Name = "New Term";
-            StartDate = DateTime.Now;
-            EndDate = DateTime.Now.AddDays(1);
-
-            CreateTermCommand = new Command(async () => {
+            SaveTermCommand = new Command(async () =>
+            {
                 if (String.IsNullOrWhiteSpace(Name))
                 {
                     await Application.Current.MainPage.DisplayAlert("Invaild Term Name", "Term name must contain at least one character.", "Ok");
@@ -27,14 +24,15 @@ namespace AcademicTracker.ViewModel
                 }
                 else
                 {
-                    DataHelper.CreateTerm(new Term(Name, StartDate, EndDate));
+                    ViewModel.Name = Name;
+                    ViewModel.CurrentTerm.Name = Name;
+                    DataHelper.UpdateTerm(ViewModel.CurrentTerm);
                     await Application.Current.MainPage.Navigation.PopModalAsync();
                 }
             });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public Command CreateTermCommand { get; }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -45,14 +43,17 @@ namespace AcademicTracker.ViewModel
         private DateTime _startdate { get; set; }
         private DateTime _enddate { get; set; }
 
+        public Command SaveTermCommand { get; set; }
+        public CourseViewModel ViewModel { get; set; }
+
         public string Name
         {
             get { return _name; }
-            set 
+            set
             {
                 _name = value;
                 OnPropertyChanged();
-            } 
+            }
         }
 
         public DateTime StartDate

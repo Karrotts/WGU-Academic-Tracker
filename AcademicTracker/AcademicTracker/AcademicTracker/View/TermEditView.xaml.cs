@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AcademicTracker.Model;
+using AcademicTracker.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,11 @@ namespace AcademicTracker.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TermEditView : ContentPage
     {
-        public TermEditView()
+        public TermEditView(TermEditViewModel termEditViewModel)
         {
             InitializeComponent();
+
+            BindingContext = termEditViewModel;
         }
     }
 }

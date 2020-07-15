@@ -24,5 +24,10 @@ namespace AcademicTracker.View
         {
             collectionPanel.SelectedItem = null;
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
     }
 }
