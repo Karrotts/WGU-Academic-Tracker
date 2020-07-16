@@ -3,7 +3,9 @@ using AcademicTracker.Test;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace AcademicTracker
 {
@@ -67,6 +69,24 @@ namespace AcademicTracker
             //delete assessment from database
         }
 
+        public static bool IsValidEmail(string email)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(email);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
+        public static bool IsPhoneNumber(string number)
+        {
+            return Regex.Match(number, @"^\(?[\d]{3}\)?[\s-]?[\d]{3}[\s-]?[\d]{4}$").Success;
+        }
+
         public static string FormatDate(DateTime start, DateTime end)
         {
             return start.ToString("MMMM dd, yyyy") + " to " + end.ToString("MMMM dd, yyyy");
@@ -77,6 +97,27 @@ namespace AcademicTracker
             if (title.Length > maxLengeth)
                 return title.Substring(0, maxLengeth) + "...";
             return title;
+        }
+
+        public static CourseStatus ConvertCourseStatus(string status)
+        {
+            switch(status.ToLower())
+            {
+                case ("new"):
+                    return CourseStatus.New;
+                    break;
+                case ("in-progress"):
+                    return CourseStatus.Inprogress;
+                    break;
+                case ("completed"):
+                    return CourseStatus.Completed;
+                    break;
+                case ("failed"):
+                    return CourseStatus.Failed;
+                    break;
+                default:
+                    return CourseStatus.New;
+            }
         }
 
     }

@@ -10,8 +10,12 @@ namespace AcademicTracker.ViewModel
 {
     public class TermEditViewModel : INotifyPropertyChanged
     {
-        public TermEditViewModel()
+        public TermEditViewModel(Term term)
         {
+            Name = term.Name;
+            StartDate = term.StartDate;
+            EndDate = term.EndDate;
+
             SaveTermCommand = new Command(async () =>
             {
                 if (String.IsNullOrWhiteSpace(Name))
@@ -24,8 +28,9 @@ namespace AcademicTracker.ViewModel
                 }
                 else
                 {
-                    ViewModel.Name = Name;
                     ViewModel.CurrentTerm.Name = Name;
+                    ViewModel.CurrentTerm.StartDate = StartDate;
+                    ViewModel.CurrentTerm.EndDate = EndDate;
                     DataHelper.UpdateTerm(ViewModel.CurrentTerm);
                     await Application.Current.MainPage.Navigation.PopModalAsync();
                 }

@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AcademicTracker.View;
@@ -25,7 +24,14 @@ namespace AcademicTracker.ViewModel
 
             CourseAddCommand = new Command(async () =>
             {
-                await Application.Current.MainPage.Navigation.PushModalAsync(new CourseAddView());
+                if(CurrentTerm.Courses.Count >= 6)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Too Many Courses", "There are too many courses in this term, please create a new term to add any additional courses or delete/modify any of the existing courses.", "Ok");
+                }
+                else
+                {
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new CourseAddView(new CourseAddViewModel() { CurrentTerm = CurrentTerm }));
+                }
             });
 
             TermDeleteCommand = new Command(async () =>
@@ -38,7 +44,7 @@ namespace AcademicTracker.ViewModel
             });
 
             TermEditCommand = new Command(async () => {
-                await Application.Current.MainPage.Navigation.PushModalAsync(new TermEditView(new TermEditViewModel() { ViewModel = this }));
+                await Application.Current.MainPage.Navigation.PushModalAsync(new TermEditView(new TermEditViewModel(CurrentTerm) { ViewModel = this }));
             });
         }
 
@@ -46,27 +52,14 @@ namespace AcademicTracker.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        
-        private string _name { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<Term> TermList { get; set; }
         public Course SelectedCourse { get; set; }
-        public string TermTitle { get { return DataHelper.TitleLimitor(CurrentTerm.Name, 20); } }
         public Term CurrentTerm { get; set; }
         public Command CourseSelectedCommand { get; }
         public Command CourseAddCommand { get; }
         public Command TermDeleteCommand { get; }
         public Command TermEditCommand { get; }
-
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                _name = CurrentTerm.Name;
-                OnPropertyChanged();
-            }
-        }
     }
 }
