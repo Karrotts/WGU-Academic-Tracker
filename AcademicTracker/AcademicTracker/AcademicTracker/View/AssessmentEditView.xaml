@@ -6,10 +6,58 @@
              mc:Ignorable="d"
              x:Class="AcademicTracker.View.AssessmentEditView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Assessment Edit View"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout x:Name="panel" Spacing="0">
+            <Frame BackgroundColor="#0066a2" CornerRadius="0">
+                <Image Source="WGU.png" HeightRequest="50"/>
+            </Frame>
+            <Label Text="NEW ASSESSMENT" BackgroundColor="#e9e6d9" Padding="13, 10, 10, 10" FontSize="Title"/>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Frame Margin="10" Padding="0">
+                    <StackLayout Spacing="0">
+                        <Label Text="Assessment Information" TextColor="White" BackgroundColor="#82bcd4" Padding="13, 10, 10, 10" FontSize="Title"/>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Name: " VerticalOptions="Center"/>
+                            <Entry Text="{Binding Name}" Grid.Column="1" VerticalOptions="Center"/>
+                            <Label Text="Start Date: " Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
+                            <DatePicker Date="{Binding StartDate}" Grid.Row="1" Grid.Column="1" />
+                            <Label Text="End Date: " Grid.Row="2" Grid.Column="0" VerticalOptions="Center"/>
+                            <DatePicker Date="{Binding EndDate}" Grid.Row="2" Grid.Column="1" />
+                            <Label Text="Type: " Grid.Row="3" Grid.Column="0" VerticalOptions="Center"/>
+                            <Picker Grid.Column="1" Grid.Row="3" SelectedItem="{Binding Type}">
+                                <Picker.Title>Type</Picker.Title>
+                                <Picker.Items>
+                                    <x:String>Objective</x:String>
+                                    <x:String>Performance</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <Label Text="Type: " Grid.Row="4" Grid.Column="0" VerticalOptions="Center"/>
+                            <Picker Grid.Column="1" Grid.Row="4" SelectedItem="{Binding Status}">
+                                <Picker.Title>Status</Picker.Title>
+                                <Picker.Items>
+                                    <x:String>New</x:String>
+                                    <x:String>Passed</x:String>
+                                    <x:String>Failed</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <Label Text="Notifications" Grid.Row="5" Grid.Column="0" VerticalTextAlignment="Center"/>
+                            <Switch IsToggled="{Binding Notifications}" Grid.Row="5" Grid.Column="1" HorizontalOptions="Start"/>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <Button Text="Save Assessment" BackgroundColor="#4486a1" FontSize="Medium" Command="{Binding AddAssessmentCommand}" TextColor="#FFFFFF" CornerRadius="0" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

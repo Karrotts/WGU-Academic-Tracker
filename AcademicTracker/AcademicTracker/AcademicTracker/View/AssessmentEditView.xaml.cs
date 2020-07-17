@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AcademicTracker.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,11 @@ namespace AcademicTracker.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AssessmentEditView : ContentPage
     {
-        public AssessmentEditView()
+        public AssessmentEditView(AssessmentEditViewModel assessmentEditViewModel)
         {
             InitializeComponent();
+
+            BindingContext = assessmentEditViewModel;
         }
     }
 }

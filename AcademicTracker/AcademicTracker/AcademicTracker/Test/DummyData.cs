@@ -29,7 +29,7 @@ namespace AcademicTracker.Test
             assessment.StartDate = DateTime.Now;
             assessment.EndDate = DateTime.Now.AddDays(1);
 
-            Assessment assessment1 = new Assessment("Mobile Application Development Using C# - LAP2", AssessmentType.Peformance);
+            Assessment assessment1 = new Assessment("Mobile Application Development Using C# - LAP2", AssessmentType.Objective);
             assessment1.Notifications = false;
             assessment1.StartDate = DateTime.Now;
             assessment1.EndDate = DateTime.Now.AddDays(1);

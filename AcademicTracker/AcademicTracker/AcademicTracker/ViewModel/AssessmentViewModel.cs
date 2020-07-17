@@ -24,7 +24,7 @@ namespace AcademicTracker.ViewModel
 
             AssessmentAddCommand = new Command(async () =>
             {
-                await Application.Current.MainPage.Navigation.PushModalAsync(new AssessmentAddView());
+                await Application.Current.MainPage.Navigation.PushModalAsync(new AssessmentAddView(new AssessmentAddViewModel() { CurrentCourse = CurrentCourse }));
             });
         }
 

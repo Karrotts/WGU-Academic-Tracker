@@ -9,15 +9,6 @@ namespace AcademicTracker.Model
 {
     public class Term : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<Course> Courses = new ObservableCollection<Course>();
-        public string DateString { get { return DataHelper.FormatDate(StartDate, EndDate); } set { OnPropertyChanged(); } }
-        public string TermTitle { get { return DataHelper.TitleLimitor(Name, 20); } set { OnPropertyChanged(); } }
-
-        private string _name;
-        private DateTime _StartDate;
-        private DateTime _EndDate;
-
         public string Name
         {
             get { return _name; }
@@ -50,6 +41,15 @@ namespace AcademicTracker.Model
                 OnPropertyChanged();
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<Course> Courses = new ObservableCollection<Course>();
+        public string DateString { get { return DataHelper.FormatDate(StartDate, EndDate); } set { OnPropertyChanged(); } }
+        public string TermTitle { get { return DataHelper.TitleLimitor(Name, 20); } set { OnPropertyChanged(); } }
+
+        private string _name;
+        private DateTime _StartDate;
+        private DateTime _EndDate;
 
         public Term(string name, DateTime startDate, DateTime endDate)
         {

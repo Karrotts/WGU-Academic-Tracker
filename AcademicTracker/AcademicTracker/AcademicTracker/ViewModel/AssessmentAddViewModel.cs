@@ -1,26 +1,33 @@
-﻿using System;
+﻿using AcademicTracker.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms;
 
-namespace AcademicTracker.Model
+namespace AcademicTracker.ViewModel
 {
-    public class Assessment : INotifyPropertyChanged
+    public class AssessmentAddViewModel : INotifyPropertyChanged
     {
+        public AssessmentAddViewModel()
+        {
+            AddAssessmentCommand = new Command(async () => {
+                await Application.Current.MainPage.Navigation.PopModalAsync();
+            });
+        }
+
         public string Name
         {
             get { return _Name; }
             set
             {
                 _Name = value;
-                AssessmentCommonName = value;
-                AssessmentLongName = value;
                 OnPropertyChanged();
             }
         }
 
-        public AssessmentType Type
+        public string Type
         {
             get { return _Type; }
             set
@@ -30,7 +37,7 @@ namespace AcademicTracker.Model
             }
         }
 
-        public AssessmentStatus Status
+        public atring Status
         {
             get { return _Status; }
             set
@@ -46,7 +53,6 @@ namespace AcademicTracker.Model
             set
             {
                 _StartDate = value;
-                DateString = value.ToString();
                 OnPropertyChanged();
             }
         }
@@ -57,7 +63,6 @@ namespace AcademicTracker.Model
             set
             {
                 _EndDate = value;
-                DateString = value.ToString();
                 OnPropertyChanged();
             }
         }
@@ -73,40 +78,19 @@ namespace AcademicTracker.Model
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public string DateString { get { return DataHelper.FormatDate(StartDate, EndDate); } set { OnPropertyChanged(); } }
-        public string AssessmentCommonName { get { return Type.ToString() + " Assessment"; } set { OnPropertyChanged(); } }
-        public string AssessmentLongName { get { return AssessmentCommonName + ": " + Name; } set { OnPropertyChanged(); } }
+        public Course CurrentCourse { get; set; }
+        public Command AddAssessmentCommand { get; set; }
 
         private string _Name;
-        private AssessmentType _Type { get; set; }
-        private AssessmentStatus _Status { get; set; }
+        private string _Type { get; set; }
+        private string _Status { get; set; }
         private DateTime _StartDate { get; set; }
         private DateTime _EndDate { get; set; }
         private bool _Notifications { get; set; }
-
-        public Assessment(string name, AssessmentType type, AssessmentStatus status = AssessmentStatus.New)
-        {
-            Name = name;
-            Type = type;
-            Status = status;
-        }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-    }
-
-    public enum AssessmentType
-    {
-        Objective  = 0,
-        Peformance = 1
-    }
-
-    public enum AssessmentStatus
-    {
-        New    = 0,
-        Passed = 1,
-        Failed = 2
     }
 }

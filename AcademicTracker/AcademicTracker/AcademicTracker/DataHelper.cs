@@ -120,5 +120,38 @@ namespace AcademicTracker
             }
         }
 
+        public static AssessmentStatus ConvertAssessmentStatus(string status)
+        {
+            switch (status.ToLower())
+            {
+                case ("new"):
+                    return AssessmentStatus.New;
+                    break;
+                case ("passed"):
+                    return AssessmentStatus.Passed;
+                    break;
+                case ("failed"):
+                    return AssessmentStatus.Failed;
+                    break;
+                default:
+                    return AssessmentStatus.New;
+            }
+        }
+
+        public static AssessmentType ConvertAssessmentType(string type)
+        {
+            switch (type.ToLower())
+            {
+                case ("objective"):
+                    return AssessmentType.Objective;
+                    break;
+                case ("performance"):
+                    return AssessmentType.Peformance;
+                    break;
+                default:
+                    return AssessmentType.Objective;
+            }
+        }
+
     }
 }
