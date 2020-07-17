@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="AcademicTracker.View.CourseDetailView">
     <NavigationPage.TitleView>
-        <Label Text="{Binding CourseTitle}" HorizontalOptions="Center" Margin="-70, 0, 0, 0" TextColor="White" FontSize="Title"/>
+        <Label Text="{Binding CurrentCourse.CourseTitle}" HorizontalOptions="Center" Margin="-70, 0, 0, 0" TextColor="White" FontSize="Title"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout Spacing="0">

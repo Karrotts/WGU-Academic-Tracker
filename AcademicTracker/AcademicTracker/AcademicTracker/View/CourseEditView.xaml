@@ -6,10 +6,81 @@
              mc:Ignorable="d"
              x:Class="AcademicTracker.View.CourseEditView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Course Edit View"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout x:Name="panel" Spacing="0">
+            <Frame BackgroundColor="#0066a2" CornerRadius="0">
+                <Image Source="WGU.png" HeightRequest="50"/>
+            </Frame>
+            <Label Text="EDIT COURSE" BackgroundColor="#e9e6d9" Padding="13, 10, 10, 10" FontSize="Title"/>
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <Frame Margin="10" Padding="0">
+                        <StackLayout Spacing="0">
+                            <Label Text="Course Information" TextColor="White" BackgroundColor="#82bcd4" Padding="13, 10, 10, 10" FontSize="Title"/>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="3*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Course Title: " VerticalOptions="Center"/>
+                                <Entry Text="{Binding Title}" Grid.Column="1" VerticalOptions="Center"/>
+                                <Label Text="Start Date: " Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
+                                <DatePicker Date="{Binding StartDate}" Grid.Row="1" Grid.Column="1" />
+                                <Label Text="End Date: " Grid.Row="2" Grid.Column="0" VerticalOptions="Center"/>
+                                <DatePicker Date="{Binding EndDate}" Grid.Row="2" Grid.Column="1" />
+                                <Label Text="Status: " Grid.Row="3" Grid.Column="0" VerticalOptions="Center"/>
+                                <Picker Grid.Column="1" Grid.Row="3" SelectedItem="{Binding Status}">
+                                    <Picker.Title>Status</Picker.Title>
+                                    <Picker.Items>
+                                        <x:String>New</x:String>
+                                        <x:String>In-Progress</x:String>
+                                        <x:String>Completed</x:String>
+                                        <x:String>Failed</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                                <Label Text="Notifications" Grid.Row="4" Grid.Column="0" VerticalTextAlignment="Center"/>
+                                <Switch IsToggled="{Binding Notifications}" Grid.Row="4" Grid.Column="1" HorizontalOptions="Start"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Margin="10" Padding="0">
+                        <StackLayout Spacing="0">
+                            <Label Text="Instructor Information" TextColor="White" BackgroundColor="#82bcd4" Padding="13, 10, 10, 10" FontSize="Title"/>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="3*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Instructor Name: " VerticalOptions="Center"/>
+                                <Entry Text="{Binding InstructorName}" Grid.Column="1" Grid.Row="0" VerticalOptions="Center"/>
+                                <Label Text="Instructor Email: " Grid.Column="0" Grid.Row="1" VerticalOptions="Center"/>
+                                <Entry Text="{Binding InstructorEmail}" Grid.Column="1" Grid.Row="1" VerticalOptions="Center"/>
+                                <Label Text="Instructor Phone: " Grid.Column="0" Grid.Row="2" VerticalOptions="Center"/>
+                                <Entry Text="{Binding InstructorPhone}" Grid.Column="1" Grid.Row="2" VerticalOptions="Center"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Margin="10" Padding="0">
+                        <StackLayout Spacing="0">
+                            <Label Text="Notes" TextColor="White" BackgroundColor="#82bcd4" Padding="13, 10, 10, 10" FontSize="Title"/>
+                            <Editor Text="{Binding Notes}" Margin="10" HeightRequest="150" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            <Button Text="Save Course" BackgroundColor="#4486a1" FontSize="Medium" Command="{Binding SaveCourseCommand}" TextColor="#FFFFFF" CornerRadius="0" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

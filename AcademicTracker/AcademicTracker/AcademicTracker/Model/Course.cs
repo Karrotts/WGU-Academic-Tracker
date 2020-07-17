@@ -17,6 +17,7 @@ namespace AcademicTracker.Model
             set
             {
                 _Title = value;
+                CourseTitle = value;
                 OnPropertyChanged();
             }
         }
@@ -104,6 +105,7 @@ namespace AcademicTracker.Model
         }
 
         public string DateString { get { return DataHelper.FormatDate(StartDate, EndDate); } set { OnPropertyChanged(); } }
+        public string CourseTitle { get { return DataHelper.TitleLimitor(Title, 20); } set { OnPropertyChanged(); } }
 
         private string _Title { get; set; }
         private DateTime _StartDate { get; set; }

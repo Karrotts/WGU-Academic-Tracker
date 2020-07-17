@@ -27,7 +27,7 @@ namespace AcademicTracker.ViewModel
             });
 
             CourseEditCommand = new Command(async () => {
-                await Application.Current.MainPage.Navigation.PushModalAsync(new CourseEditView());
+                await Application.Current.MainPage.Navigation.PushModalAsync(new CourseEditView(new CourseEditViewModel(CurrentCourse) { CurrentCourse = CurrentCourse, CurrentTerm = CurrentTerm }));
             });
         }
 
