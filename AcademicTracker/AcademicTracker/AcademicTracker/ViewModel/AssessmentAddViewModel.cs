@@ -13,25 +13,43 @@ namespace AcademicTracker.ViewModel
     {
         public AssessmentAddViewModel()
         {
+            Name = "New Assessment";
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now.AddDays(1);
+            Type = "Objective";
+            Status = "New";
+            Notifications = true;
+
             AddAssessmentCommand = new Command(async () => {
-                Assessment found = CurrentCourse.Assessments.FirstOrDefault<Assessment>(type => type.Type == AssessmentType.Objective);
+
                 if (String.IsNullOrWhiteSpace(Name))
                 {
-
+                    await Application.Current.MainPage.DisplayAlert("Invalid Data", "Assessment name must contain at least one character", "Ok");
                 }
                 else if (String.IsNullOrWhiteSpace(Type) || String.IsNullOrWhiteSpace(Status))
                 {
-
+                    await Application.Current.MainPage.DisplayAlert("Invalid Data", "Assessment name must contain at least one character", "Ok");
                 }
                 else if (StartDate >= EndDate)
                 {
-
+                    await Application.Current.MainPage.DisplayAlert("Invalid Date", "Start date must be before end date.", "Ok");
                 }
-                else if (DataHelper.ConvertAssessmentType(Status) == AssessmentType.Objective)
+                else if (DataHelper.ConvertAssessmentType(Type) == AssessmentType.Objective && CurrentCourse.Assessments.Where(type => type.Type == AssessmentType.Objective).Count() >= 1)
                 {
+                    await Application.Current.MainPage.DisplayAlert("Invalid Type", "Assessment type already exists. Assessment must be of type performance.", "Ok");
+                }
+                else if (DataHelper.ConvertAssessmentType(Type) == AssessmentType.Peformance && CurrentCourse.Assessments.Where(type => type.Type == AssessmentType.Peformance).Count() >= 1)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Invalid Type", "Assessment type already exists. Assessment must be of type objective.", "Ok");
                 }
                 else
                 {
+                    Assessment assessment = new Assessment(Name, DataHelper.ConvertAssessmentType(Type), DataHelper.ConvertAssessmentStatus(Status));
+                    assessment.StartDate = StartDate;
+                    assessment.EndDate = EndDate;
+                    assessment.Notifications = Notifications;
+
+                    DataHelper.CreateAssessment(assessment, CurrentCourse);
                     await Application.Current.MainPage.Navigation.PopModalAsync();
                 }
             });

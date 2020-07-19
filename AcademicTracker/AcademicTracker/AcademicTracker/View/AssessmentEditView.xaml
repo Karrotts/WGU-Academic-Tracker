@@ -35,7 +35,7 @@
                             <Label Text="End Date: " Grid.Row="2" Grid.Column="0" VerticalOptions="Center"/>
                             <DatePicker Date="{Binding EndDate}" Grid.Row="2" Grid.Column="1" />
                             <Label Text="Type: " Grid.Row="3" Grid.Column="0" VerticalOptions="Center"/>
-                            <Picker Grid.Column="1" Grid.Row="3" SelectedItem="{Binding Type}">
+                            <Picker Grid.Column="1" Grid.Row="3" SelectedItem="{Binding Type}" IsEnabled="False">
                                 <Picker.Title>Type</Picker.Title>
                                 <Picker.Items>
                                     <x:String>Objective</x:String>
@@ -57,7 +57,7 @@
                     </StackLayout>
                 </Frame>
             </StackLayout>
-            <Button Text="Save Assessment" BackgroundColor="#4486a1" FontSize="Medium" Command="{Binding AddAssessmentCommand}" TextColor="#FFFFFF" CornerRadius="0" />
+            <Button Text="Save Assessment" BackgroundColor="#4486a1" FontSize="Medium" Command="{Binding SaveAssessmentCommand}" TextColor="#FFFFFF" CornerRadius="0" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
