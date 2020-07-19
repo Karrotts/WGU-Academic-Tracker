@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
@@ -13,7 +14,26 @@ namespace AcademicTracker.ViewModel
         public AssessmentAddViewModel()
         {
             AddAssessmentCommand = new Command(async () => {
-                await Application.Current.MainPage.Navigation.PopModalAsync();
+                Assessment found = CurrentCourse.Assessments.FirstOrDefault<Assessment>(type => type.Type == AssessmentType.Objective);
+                if (String.IsNullOrWhiteSpace(Name))
+                {
+
+                }
+                else if (String.IsNullOrWhiteSpace(Type) || String.IsNullOrWhiteSpace(Status))
+                {
+
+                }
+                else if (StartDate >= EndDate)
+                {
+
+                }
+                else if (DataHelper.ConvertAssessmentType(Status) == AssessmentType.Objective)
+                {
+                }
+                else
+                {
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                }
             });
         }
 
@@ -37,7 +57,7 @@ namespace AcademicTracker.ViewModel
             }
         }
 
-        public atring Status
+        public string Status
         {
             get { return _Status; }
             set
