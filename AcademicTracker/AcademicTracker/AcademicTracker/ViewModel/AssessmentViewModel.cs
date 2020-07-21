@@ -24,7 +24,14 @@ namespace AcademicTracker.ViewModel
 
             AssessmentAddCommand = new Command(async () =>
             {
-                await Application.Current.MainPage.Navigation.PushModalAsync(new AssessmentAddView(new AssessmentAddViewModel() { CurrentCourse = CurrentCourse }));
+                if(CurrentCourse.Assessments.Count >= 2)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Too Many Assessments", "Unable to add any additional Assessments. Limit 2.", "Ok");
+                }
+                else
+                {
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new AssessmentAddView(new AssessmentAddViewModel() { CurrentCourse = CurrentCourse }));
+                }
             });
         }
 

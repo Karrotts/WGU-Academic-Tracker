@@ -35,7 +35,7 @@
                             <Label Text="End Date: " Grid.Row="2" Grid.Column="0" VerticalOptions="Center"/>
                             <DatePicker Date="{Binding EndDate}" Grid.Row="2" Grid.Column="1" />
                             <Label Text="Type: " Grid.Row="3" Grid.Column="0" VerticalOptions="Center"/>
-                            <Picker Grid.Column="1" Grid.Row="3" SelectedItem="{Binding Type}" IsEnabled="False">
+                            <Picker Grid.Column="1" Grid.Row="3" SelectedItem="{Binding Type}">
                                 <Picker.Title>Type</Picker.Title>
                                 <Picker.Items>
                                     <x:String>Objective</x:String>

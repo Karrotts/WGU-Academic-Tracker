@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
@@ -20,7 +21,34 @@ namespace AcademicTracker.ViewModel
             Notifications = assessment.Notifications;
 
             SaveAssessmentCommand = new Command(async () => {
-                await Application.Current.MainPage.Navigation.PopModalAsync();
+                if (String.IsNullOrWhiteSpace(Name))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Invalid Data", "Assessment name must contain at least one character", "Ok");
+                }
+                else if (String.IsNullOrWhiteSpace(Type) || String.IsNullOrWhiteSpace(Status))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Invalid Data", "Assessment name must contain at least one character", "Ok");
+                }
+                else if (StartDate >= EndDate)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Invalid Date", "Start date must be before end date.", "Ok");
+                }
+                else if (CurrentCourse.Assessments.Count >= 2 && CurrentAssessment.Type != DataHelper.ConvertAssessmentType(Type))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Invalid Type", "Unable to change assessment type, all current assessment types are taken.", "Ok");
+                }
+                else
+                {
+                    CurrentAssessment.Name = Name;
+                    CurrentAssessment.StartDate = StartDate;
+                    CurrentAssessment.EndDate = EndDate;
+                    CurrentAssessment.Status = DataHelper.ConvertAssessmentStatus(Status);
+                    CurrentAssessment.Type = DataHelper.ConvertAssessmentType(Type);
+                    CurrentAssessment.Notifications = Notifications;
+
+                    DataHelper.UpdateAssessment(CurrentAssessment, CurrentCourse);
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                }
             });
         }
 
