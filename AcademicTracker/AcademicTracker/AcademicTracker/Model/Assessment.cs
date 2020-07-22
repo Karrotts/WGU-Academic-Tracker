@@ -1,13 +1,19 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace AcademicTracker.Model
 {
+    [Table("assessment")]
     public class Assessment : INotifyPropertyChanged
     {
+        [PrimaryKey, AutoIncrement]
+        public int ID { get; set; }
+
         public string Name
         {
             get { return _Name; }

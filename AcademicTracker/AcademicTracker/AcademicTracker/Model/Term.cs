@@ -8,6 +8,7 @@ using SQLite;
 
 namespace AcademicTracker.Model
 {
+    [Table("term")]
     public class Term : INotifyPropertyChanged
     {
         [PrimaryKey, AutoIncrement]
