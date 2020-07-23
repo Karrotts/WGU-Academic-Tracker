@@ -1,8 +1,10 @@
 ﻿using AcademicTracker.Model;
 using AcademicTracker.Test;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -12,9 +14,40 @@ namespace AcademicTracker
     public static class DataHelper
     {
         public static ObservableCollection<Term> DataStore = new ObservableCollection<Term>();
+        public static SQLiteAsyncConnection connection;
 
         public static void Initalize()
         {
+            connection = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "wgu.db3"));
+            connection.ExecuteAsync("CREATE TABLE terms (" +
+                                    "id INTERGER PRIMARY KEY AUTOINCREMENT," +
+                                    "name TEXT NOT NULL," +
+                                    "start_date TEXT NOT NULL," +
+                                    "end_date TEXT NOT NULL" +
+                                    ")");
+            connection.ExecuteAsync("CREATE TABLE courses (" +
+                                    "id INTERGER PRIMARY KEY AUTOINCREMENT," +
+                                    "term_id INTERGER," +
+                                    "title TEXT NOT NULL," +
+                                    "start_date TEXT NOT NULL," +
+                                    "end_date TEXT NOT NULL," +
+                                    "status TEXT NOT NULL," +
+                                    "notifications INTERGER NOT NULL," +
+                                    "instructor_name TEXT NOT NULL," +
+                                    "instructor_email TEXT NOT NULL," +
+                                    "instructor_phone TEXT NOT NULL," +
+                                    "notes TEXT NOT NULL" +
+                                    ")");
+            connection.ExecuteAsync("CREATE TABLE assessments (" +
+                                    "id INTERGER PRIMARY KEY AUTOINCREMENT," +
+                                    "course_id INTERGER NOT NULL," +
+                                    "name TEXT NOT NULL," +
+                                    "start_date TEXT NOT NULL," +
+                                    "end_date TEXT NOT NULL," +
+                                    "notifications INTERGER NOT NULL," +
+                                    "type TEXT NOT NULL," +
+                                    "status TEXT NOT NULL" +
+                                    ")");
             DataStore.Add(DummyData.Generate("Starting Term"));
         }
 

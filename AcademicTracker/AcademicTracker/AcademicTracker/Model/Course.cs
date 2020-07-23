@@ -8,12 +8,10 @@ using System.Text;
 
 namespace AcademicTracker.Model
 {
-    [Table("Course")]
     public class Course : INotifyPropertyChanged
     {
         public ObservableCollection<Assessment> Assessments = new ObservableCollection<Assessment>();
 
-        [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public int TermID { get; set; }
 
