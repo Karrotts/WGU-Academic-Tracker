@@ -10,6 +10,7 @@ namespace AcademicTracker.Model
 {
     public class Term : INotifyPropertyChanged
     {
+        [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
         public string Name
@@ -45,22 +46,19 @@ namespace AcademicTracker.Model
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public ObservableCollection<Course> Courses = new ObservableCollection<Course>();
-
+        [Ignore]
+        public ObservableCollection<Course> Courses { get; set; }
         public string DateString { get { return DataHelper.FormatDate(StartDate, EndDate); } set { OnPropertyChanged(); } }
         public string TermTitle { get { return DataHelper.TitleLimitor(Name, 20); } set { OnPropertyChanged(); } }
 
         private string _name;
         private DateTime _StartDate;
         private DateTime _EndDate;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public Term(string name, DateTime startDate, DateTime endDate)
+        public Term()
         {
-            Name = name;
-            StartDate = startDate;
-            EndDate = endDate;
+
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq.Expressions;
 using System.Text;
 using AcademicTracker.Model;
@@ -11,7 +12,10 @@ namespace AcademicTracker.Test
     {
         public static Term Generate(string termName)
         {
-            Term term = new Term(termName, DateTime.Now, DateTime.Now.AddDays(1));
+            Term term = new Term();
+            term.Name = termName;
+            term.StartDate = DateTime.Now;
+            term.EndDate = DateTime.Now.AddDays(1);
 
             Course course = new Course();
             course.Title = "C971 - Mobile Application Development Using C#";
@@ -36,6 +40,7 @@ namespace AcademicTracker.Test
 
             course.Assessments.Add(assessment);
             course.Assessments.Add(assessment1);
+            term.Courses = new ObservableCollection<Course>();
             term.Courses.Add(course);
 
             course = new Course();

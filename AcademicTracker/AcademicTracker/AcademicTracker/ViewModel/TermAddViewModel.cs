@@ -27,7 +27,11 @@ namespace AcademicTracker.ViewModel
                 }
                 else
                 {
-                    DataHelper.CreateTerm(new Term(Name, StartDate, EndDate));
+                    Term term = new Term();
+                    term.Name = Name;
+                    term.StartDate = StartDate;
+                    term.EndDate = EndDate;
+                    DataHelper.CreateTerm(term);
                     await Application.Current.MainPage.Navigation.PopModalAsync();
                 }
             });

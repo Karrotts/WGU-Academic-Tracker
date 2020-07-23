@@ -19,36 +19,13 @@ namespace AcademicTracker
         public static void Initalize()
         {
             connection = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "wgu.db3"));
-            connection.ExecuteAsync("CREATE TABLE terms (" +
-                                    "id INTERGER PRIMARY KEY AUTOINCREMENT," +
-                                    "name TEXT NOT NULL," +
-                                    "start_date TEXT NOT NULL," +
-                                    "end_date TEXT NOT NULL" +
-                                    ")");
-            connection.ExecuteAsync("CREATE TABLE courses (" +
-                                    "id INTERGER PRIMARY KEY AUTOINCREMENT," +
-                                    "term_id INTERGER," +
-                                    "title TEXT NOT NULL," +
-                                    "start_date TEXT NOT NULL," +
-                                    "end_date TEXT NOT NULL," +
-                                    "status TEXT NOT NULL," +
-                                    "notifications INTERGER NOT NULL," +
-                                    "instructor_name TEXT NOT NULL," +
-                                    "instructor_email TEXT NOT NULL," +
-                                    "instructor_phone TEXT NOT NULL," +
-                                    "notes TEXT NOT NULL" +
-                                    ")");
-            connection.ExecuteAsync("CREATE TABLE assessments (" +
-                                    "id INTERGER PRIMARY KEY AUTOINCREMENT," +
-                                    "course_id INTERGER NOT NULL," +
-                                    "name TEXT NOT NULL," +
-                                    "start_date TEXT NOT NULL," +
-                                    "end_date TEXT NOT NULL," +
-                                    "notifications INTERGER NOT NULL," +
-                                    "type TEXT NOT NULL," +
-                                    "status TEXT NOT NULL" +
-                                    ")");
-            DataStore.Add(DummyData.Generate("Starting Term"));
+            var table = connection.CreateTableAsync<Term>();
+            connection.InsertAsync(DummyData.Generate("Starting Term"));
+            
+            foreach (Term t in connection.Table<Term>().ToListAsync().Result)
+            {
+                DataStore.Add(t);
+            }
         }
 
         public static void CreateTerm(Term term)
