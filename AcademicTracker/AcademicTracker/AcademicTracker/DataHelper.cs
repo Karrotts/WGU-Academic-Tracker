@@ -8,30 +8,44 @@ using System.IO;
 using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
+using Xamarin.Forms;
 
 namespace AcademicTracker
 {
     public static class DataHelper
     {
         public static ObservableCollection<Term> DataStore = new ObservableCollection<Term>();
-        public static SQLiteAsyncConnection connection;
+        public static SQLiteConnection connection;
 
         public static void Initalize()
         {
-            connection = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "wgu.db3"));
-            var table = connection.CreateTableAsync<Term>();
-            connection.InsertAsync(DummyData.Generate("Starting Term"));
-            
-            foreach (Term t in connection.Table<Term>().ToListAsync().Result)
-            {
-                DataStore.Add(t);
-            }
+            //set connection
+            connection = new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "wgu.db3"));
+
+            //create tables if they do not exist
+            connection.Execute("CREATE TABLE IF NOT EXISTS terms (" +
+                               "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                               "name TEXT NOT NULL," +
+                               "start_date TEXT NOT NULL," +
+                               "end_date TEXT NOT NULL)");
+            Term term = DummyData.Generate("Test");
+            CreateTerm(term);
         }
 
         public static void CreateTerm(Term term)
         {
             DataStore.Add(term);
-            //Add term into database
+            SQLiteCommand command = new SQLiteCommand(connection);
+            command.CommandText = "INSERT INTO terms (name, start_date, end_date) VALUES ('My Term', '" + DateTime.Now.ToString() + "', '" + DateTime.Now.AddDays(1).ToString() + "')";
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                Application.Current.MainPage.DisplayAlert("SQLite Error", e.Message, "Ok");
+                Console.WriteLine(e.Message);
+            }
         }
 
         public static void UpdateTerm(Term term)
