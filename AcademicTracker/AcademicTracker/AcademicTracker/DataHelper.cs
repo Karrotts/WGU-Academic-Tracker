@@ -35,6 +35,7 @@ namespace AcademicTracker
             foreach(TermData termData in termsData)
             {
                 Term term = new Term();
+                term.ID = termData.id;
                 term.Name = termData.name;
                 term.StartDate = termData.start_date;
                 term.EndDate = termData.end_date;
@@ -52,6 +53,7 @@ namespace AcademicTracker
             await connection.InsertAsync(data).ContinueWith((t) =>
             {
                 Console.WriteLine("New Term ID: {0}", data.id);
+                term.ID = data.id;
             });
 
             DataStore.Add(term);
@@ -62,10 +64,13 @@ namespace AcademicTracker
             //Just need to update the database here
         }
 
-        public static void DeleteTerm(Term term)
+        public async static void DeleteTerm(Term term)
         {
             DataStore.Remove(term);
-            //remove term from database
+            TermData termData = new TermData();
+            termData.id = term.ID;
+            Console.WriteLine(term.ID);
+            await connection.ExecuteAsync("DELETE FROM terms WHERE id = " + term.ID);
         }
 
         public static void CreateCourse(Course course, Term term)
