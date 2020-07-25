@@ -8,6 +8,7 @@ using System.IO;
 using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace AcademicTracker
@@ -15,37 +16,45 @@ namespace AcademicTracker
     public static class DataHelper
     {
         public static ObservableCollection<Term> DataStore = new ObservableCollection<Term>();
-        public static SQLiteConnection connection;
+        public static SQLiteAsyncConnection connection;
 
-        public static void Initalize()
+        public async static void Initalize()
         {
             //set connection
-            connection = new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "wgu.db3"));
+            connection = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "wgu.db3"));
+            await connection.CreateTableAsync<TermData>();
+            //course data
+            //assessment data... ect...
+            LoadTerms();
 
-            //create tables if they do not exist
-            connection.Execute("CREATE TABLE IF NOT EXISTS terms (" +
-                               "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                               "name TEXT NOT NULL," +
-                               "start_date TEXT NOT NULL," +
-                               "end_date TEXT NOT NULL)");
-            Term term = DummyData.Generate("Test");
-            CreateTerm(term);
         }
 
-        public static void CreateTerm(Term term)
+        private async static void LoadTerms()
         {
+            var termsData = await connection.Table<TermData>().ToListAsync();
+            foreach(TermData termData in termsData)
+            {
+                Term term = new Term();
+                term.Name = termData.name;
+                term.StartDate = termData.start_date;
+                term.EndDate = termData.end_date;
+                DataStore.Add(term);
+            }
+        }
+
+        public async static void CreateTerm(Term term)
+        {
+            TermData data = new TermData();
+            data.name = term.Name;
+            data.start_date = term.StartDate;
+            data.end_date = term.EndDate;
+
+            await connection.InsertAsync(data).ContinueWith((t) =>
+            {
+                Console.WriteLine("New Term ID: {0}", data.id);
+            });
+
             DataStore.Add(term);
-            SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = "INSERT INTO terms (name, start_date, end_date) VALUES ('My Term', '" + DateTime.Now.ToString() + "', '" + DateTime.Now.AddDays(1).ToString() + "')";
-            try
-            {
-                command.ExecuteNonQuery();
-            }
-            catch(Exception e)
-            {
-                Application.Current.MainPage.DisplayAlert("SQLite Error", e.Message, "Ok");
-                Console.WriteLine(e.Message);
-            }
         }
 
         public static void UpdateTerm(Term term)
