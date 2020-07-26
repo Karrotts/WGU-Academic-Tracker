@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Plugin.LocalNotifications;
 
 namespace AcademicTracker
 {
@@ -47,7 +48,10 @@ namespace AcademicTracker
                 course.InstructorPhone = "(888) 888-8888";
                 course.InstructorEmail = "wbmill48@wgu.edu";
                 course.Status = CourseStatus.New;
-                course.Notes = "Mobile Application Development Using C# introduces students to programming for mobile devices. Building on students’ previous knowledge of programming in C#, this course investigates Xamarin.Forms and how it can be used to build a mobile application. This course explores a broad range of topics, including mobile user interface design and development; building applications that adapt to different mobile devices and platforms; managing data using a local database; and consuming REST-based web services. There are several prerequisites for this course: Software I and II, and UI Design.";
+                course.Notes = "Mobile Application Development Using C# introduces students to programming for mobile devices. Building on students’ previous knowledge of programming in C#, " +
+                               "this course investigates Xamarin.Forms and how it can be used to build a mobile application. This course explores a broad range of topics, including mobile user interface " +
+                               "design and development; building applications that adapt to different mobile devices and platforms; managing data using a local database; and consuming REST-based web " +
+                               "services. There are several prerequisites for this course: Software I and II, and UI Design.";
 
                 CreateCourse(course, term);
 
@@ -63,7 +67,13 @@ namespace AcademicTracker
             else
             {
                 connection = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "datas.db3"));
-                LoadTerms();
+
+                if(DataStore.Count == 0)
+                {
+                    LoadTerms();
+                }
+
+                PushNotifications();
             }
         }
 
@@ -121,6 +131,39 @@ namespace AcademicTracker
             }
         }
 
+        private async static void PushNotifications()
+        {
+            var coursesData = from data in connection.Table<CourseData>()
+                              where data.id != 0
+                              select data;
+
+            var assessmentsData = from data in connection.Table<AssessmentData>()
+                                  where data.id != 0
+                                  select data;
+
+            foreach(CourseData course in await coursesData.ToListAsync())
+            {
+                if(course.notifications)
+                {
+                    if (course.start_date.Date == DateTime.Now.Date)
+                        CrossLocalNotifications.Current.Show("Reminder", $"{course.title} starts today!");
+                    if (course.end_date.Date == DateTime.Now.Date)
+                        CrossLocalNotifications.Current.Show("Reminder", $"{course.title} ends today!");
+                }
+            }
+
+            foreach (AssessmentData assessment in await assessmentsData.ToListAsync())
+            {
+                if(assessment.notifications)
+                {
+                    if (assessment.start_date.Date == DateTime.Now.Date)
+                        CrossLocalNotifications.Current.Show("Reminder", $"{assessment.name} starts today!");
+                    if (assessment.end_date.Date == DateTime.Now.Date)
+                        CrossLocalNotifications.Current.Show("Reminder", $"{assessment.name} ends today!");
+                }
+            }
+        }
+
         public async static void CreateTerm(Term term)
         {
             TermData data = new TermData();
@@ -150,7 +193,19 @@ namespace AcademicTracker
         public async static void DeleteTerm(Term term)
         {
             DataStore.Remove(term);
+
             await connection.ExecuteAsync("DELETE FROM terms WHERE id = " + term.ID);
+
+            var coursesData = from data in connection.Table<CourseData>()
+                              where data.term_id == term.ID
+                              select data;
+
+            foreach(CourseData course in await coursesData.ToListAsync())
+            {
+                await connection.ExecuteAsync("DELETE FROM assessments WHERE course_id = " + course.id);
+            }
+
+            await connection.ExecuteAsync("DELETE FROM courses WHERE term_id = " + term.ID);
         }
 
         public async static void CreateCourse(Course course, Term term)
@@ -197,6 +252,7 @@ namespace AcademicTracker
         {
             term.Courses.Remove(course);
             await connection.ExecuteAsync("DELETE FROM courses WHERE id = " + course.ID);
+            await connection.ExecuteAsync("DELETE FROM assessments WHERE course_id = " + course.ID);
         }
 
         public async static void CreateAssessment(Assessment assessment, Course course)
