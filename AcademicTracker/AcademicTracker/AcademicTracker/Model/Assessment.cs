@@ -8,11 +8,10 @@ using System.Text;
 
 namespace AcademicTracker.Model
 {
-    [Table("assessment")]
     public class Assessment : INotifyPropertyChanged
     {
-        [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
+        public int CourseID { get; set; }
 
         public string Name
         {
@@ -32,6 +31,8 @@ namespace AcademicTracker.Model
             set
             {
                 _Type = value;
+                AssessmentCommonName = "";
+                AssessmentLongName = "";
                 OnPropertyChanged();
             }
         }
@@ -106,7 +107,7 @@ namespace AcademicTracker.Model
     public enum AssessmentType
     {
         Objective  = 0,
-        Peformance = 1
+        Performance = 1
     }
 
     public enum AssessmentStatus

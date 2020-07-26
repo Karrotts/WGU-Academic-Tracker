@@ -38,7 +38,7 @@ namespace AcademicTracker.ViewModel
                 {
                     await Application.Current.MainPage.DisplayAlert("Invalid Type", "Assessment type already exists. Assessment must be of type performance.", "Ok");
                 }
-                else if (DataHelper.ConvertAssessmentType(Type) == AssessmentType.Peformance && CurrentCourse.Assessments.Where(type => type.Type == AssessmentType.Peformance).Count() >= 1)
+                else if (DataHelper.ConvertAssessmentType(Type) == AssessmentType.Performance && CurrentCourse.Assessments.Where(type => type.Type == AssessmentType.Performance).Count() >= 1)
                 {
                     await Application.Current.MainPage.DisplayAlert("Invalid Type", "Assessment type already exists. Assessment must be of type objective.", "Ok");
                 }

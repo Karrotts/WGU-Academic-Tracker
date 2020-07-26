@@ -28,7 +28,7 @@ namespace AcademicTracker.Test
             course.Status = CourseStatus.New;
             course.Notes = "Mobile Application Development Using C# introduces students to programming for mobile devices. Building on students’ previous knowledge of programming in C#, this course investigates Xamarin.Forms and how it can be used to build a mobile application. This course explores a broad range of topics, including mobile user interface design and development; building applications that adapt to different mobile devices and platforms; managing data using a local database; and consuming REST-based web services. There are several prerequisites for this course: Software I and II, and UI Design.";
 
-            Assessment assessment = new Assessment("Mobile Application Development Using C# - LAP1", AssessmentType.Peformance);
+            Assessment assessment = new Assessment("Mobile Application Development Using C# - LAP1", AssessmentType.Performance);
             assessment.Notifications = true;
             assessment.StartDate = DateTime.Now;
             assessment.EndDate = DateTime.Now.AddDays(1);

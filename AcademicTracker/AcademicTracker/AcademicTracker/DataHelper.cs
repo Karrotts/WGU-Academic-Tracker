@@ -21,12 +21,19 @@ namespace AcademicTracker
         public async static void Initalize()
         {
             //set connection
-            connection = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "wgu.db3"));
+            if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "wgus.db3")))
+            {
+                //On first load
+                connection = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "wgus.db3"));
+            }
+            else
+            {
+                connection = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "wgus.db3"));
+            }
             await connection.CreateTableAsync<TermData>();
-            //course data
-            //assessment data... ect...
+            await connection.CreateTableAsync<CourseData>();
+            await connection.CreateTableAsync<AssessmentData>();
             LoadTerms();
-
         }
 
         private async static void LoadTerms()
@@ -39,6 +46,46 @@ namespace AcademicTracker
                 term.Name = termData.name;
                 term.StartDate = termData.start_date;
                 term.EndDate = termData.end_date;
+
+                var coursesData = from data in connection.Table<CourseData>()
+                                  where data.term_id == termData.id
+                                  select data;
+
+                foreach(CourseData courseData in await coursesData.ToListAsync())
+                {
+                    Course course = new Course();
+                    course.ID = courseData.id;
+                    course.TermID = courseData.term_id;
+                    course.Title = courseData.title;
+                    course.StartDate = courseData.start_date;
+                    course.EndDate = courseData.end_date;
+                    course.Notifications = courseData.notifications;
+                    course.Status = ConvertCourseStatus(courseData.status);
+                    course.InstructorName = courseData.instructor_name;
+                    course.InstructorPhone = courseData.instructor_phone;
+                    course.InstructorEmail = courseData.instructor_email;
+                    course.Notes = courseData.notes;
+
+                    var assessmentsData = from data in connection.Table<AssessmentData>()
+                                         where data.course_id == courseData.id
+                                         select data;
+
+                    foreach(AssessmentData assessmentData in await assessmentsData.ToListAsync())
+                    {
+                        Assessment assessment = new Assessment(assessmentData.name, ConvertAssessmentType(assessmentData.type), ConvertAssessmentStatus(assessmentData.status));
+                        Console.WriteLine(assessmentData.id);
+                        assessment.ID = assessmentData.id;
+                        assessment.CourseID = assessmentData.course_id;
+                        assessment.Notifications = assessmentData.notifications;
+                        assessment.StartDate = assessmentData.start_date;
+                        assessment.EndDate = assessmentData.end_date;
+
+                        course.Assessments.Add(assessment);
+                    }
+
+                    term.Courses.Add(course);
+                }
+
                 DataStore.Add(term);
             }
         }
@@ -59,52 +106,106 @@ namespace AcademicTracker
             DataStore.Add(term);
         }
 
-        public static void UpdateTerm(Term term)
+        public async static void UpdateTerm(Term term)
         {
-            //Just need to update the database here
+            TermData termData = new TermData();
+            termData.id = term.ID;
+            termData.name = term.Name;
+            termData.start_date = term.StartDate;
+            termData.end_date = term.EndDate;
+            await connection.UpdateAsync(termData);
         }
 
         public async static void DeleteTerm(Term term)
         {
             DataStore.Remove(term);
-            TermData termData = new TermData();
-            termData.id = term.ID;
-            Console.WriteLine(term.ID);
             await connection.ExecuteAsync("DELETE FROM terms WHERE id = " + term.ID);
         }
 
-        public static void CreateCourse(Course course, Term term)
+        public async static void CreateCourse(Course course, Term term)
         {
+            CourseData courseData = new CourseData();
+            courseData.term_id = term.ID;
+            courseData.title = course.Title;
+            courseData.start_date = course.StartDate;
+            courseData.end_date = course.EndDate;
+            courseData.notifications = course.Notifications;
+            courseData.status = course.Status.ToString();
+            courseData.instructor_name = course.InstructorName;
+            courseData.instructor_email = course.InstructorEmail;
+            courseData.instructor_phone = course.InstructorPhone;
+            courseData.notes = course.Notes;
+
+            await connection.InsertAsync(courseData).ContinueWith((t) =>
+            {
+                Console.WriteLine("New Course ID: {0}", courseData.id);
+                course.ID = courseData.id;
+            });
+
             term.Courses.Add(course);
-            //add course into database  
         }
 
-        public static void UpdateCourse(Course course, Term term)
+        public async static void UpdateCourse(Course course, Term term)
         {
-            //Just need to update the database here
+            CourseData courseData = new CourseData();
+            courseData.id = course.ID;
+            courseData.term_id = term.ID;
+            courseData.title = course.Title;
+            courseData.start_date = course.StartDate;
+            courseData.end_date = course.EndDate;
+            courseData.notifications = course.Notifications;
+            courseData.status = course.Status.ToString();
+            courseData.instructor_name = course.InstructorName;
+            courseData.instructor_email = course.InstructorEmail;
+            courseData.instructor_phone = course.InstructorPhone;
+            courseData.notes = course.Notes;
+            await connection.UpdateAsync(courseData);
         }
 
-        public static void DeleteCourse(Course course, Term term)
+        public async static void DeleteCourse(Course course, Term term)
         {
             term.Courses.Remove(course);
-            //remove course from database
+            await connection.ExecuteAsync("DELETE FROM courses WHERE id = " + course.ID);
         }
 
-        public static void CreateAssessment(Assessment assessment, Course course)
+        public async static void CreateAssessment(Assessment assessment, Course course)
         {
+            AssessmentData assessmentData = new AssessmentData();
+            assessmentData.course_id = course.ID;
+            assessmentData.name = assessment.Name;
+            assessmentData.start_date = assessment.StartDate;
+            assessmentData.end_date = assessment.EndDate;
+            assessmentData.notifications = assessment.Notifications;
+            assessmentData.status = assessment.Status.ToString();
+            assessmentData.type = assessment.Type.ToString();
+
+            await connection.InsertAsync(assessmentData).ContinueWith((t) =>
+            {
+                Console.WriteLine("New Assessment ID: {0}", assessmentData.id);
+                assessment.ID = assessmentData.id;
+            });
+
             course.Assessments.Add(assessment);
-            //add assessment into database
         }
 
-        public static void UpdateAssessment(Assessment assessment, Course course)
+        public async static void UpdateAssessment(Assessment assessment, Course course)
         {
-            //Just need to update the database here
+            AssessmentData assessmentData = new AssessmentData();
+            assessmentData.id = assessment.ID;
+            assessmentData.course_id = course.ID;
+            assessmentData.name = assessment.Name;
+            assessmentData.start_date = assessment.StartDate;
+            assessmentData.end_date = assessment.EndDate;
+            assessmentData.notifications = assessment.Notifications;
+            assessmentData.status = assessment.Status.ToString();
+            assessmentData.type = assessment.Type.ToString();
+            await connection.UpdateAsync(assessmentData);
         }
 
-        public static void DeleteAssessment(Assessment assessment, Course course)
+        public async static void DeleteAssessment(Assessment assessment, Course course)
         {
             course.Assessments.Remove(assessment);
-            //delete assessment from database
+            await connection.ExecuteAsync("DELETE FROM assessments WHERE id = " + assessment.ID);
         }
 
         public static bool IsValidEmail(string email)
@@ -184,7 +285,7 @@ namespace AcademicTracker
                     return AssessmentType.Objective;
                     break;
                 case ("performance"):
-                    return AssessmentType.Peformance;
+                    return AssessmentType.Performance;
                     break;
                 default:
                     return AssessmentType.Objective;
