@@ -10,7 +10,6 @@ using Xamarin.Forms.Xaml;
 using AcademicTracker.View;
 using System.Collections.ObjectModel;
 using AcademicTracker.Model;
-using AcademicTracker.Test;
 
 namespace AcademicTracker.ViewModel
 {

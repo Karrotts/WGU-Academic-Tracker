@@ -1,5 +1,4 @@
 ﻿using AcademicTracker.Model;
-using AcademicTracker.Test;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -21,19 +20,51 @@ namespace AcademicTracker
         public async static void Initalize()
         {
             //set connection
-            if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "wgus.db3")))
+            if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "datas.db3")))
             {
                 //On first load
-                connection = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "wgus.db3"));
+                connection = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "datas.db3"));
+                await connection.CreateTableAsync<TermData>();
+                await connection.CreateTableAsync<CourseData>();
+                await connection.CreateTableAsync<AssessmentData>();
+
+                Term term = new Term();
+                term.ID = 1;
+                term.Name = "Term 1 (Current)";
+                term.StartDate = DateTime.Now;
+                term.EndDate = DateTime.Now.AddDays(1);
+
+                CreateTerm(term);
+
+                Course course = new Course();
+                course.ID = 1;
+                course.TermID = term.ID;
+                course.Title = "C971 - Mobile Application Development Using C#";
+                course.StartDate = DateTime.Now;
+                course.EndDate = DateTime.Now.AddDays(1);
+                course.Notifications = true;
+                course.InstructorName = "Wes Miller";
+                course.InstructorPhone = "(888) 888-8888";
+                course.InstructorEmail = "wbmill48@wgu.edu";
+                course.Status = CourseStatus.New;
+                course.Notes = "Mobile Application Development Using C# introduces students to programming for mobile devices. Building on students’ previous knowledge of programming in C#, this course investigates Xamarin.Forms and how it can be used to build a mobile application. This course explores a broad range of topics, including mobile user interface design and development; building applications that adapt to different mobile devices and platforms; managing data using a local database; and consuming REST-based web services. There are several prerequisites for this course: Software I and II, and UI Design.";
+
+                CreateCourse(course, term);
+
+                Assessment assessment = new Assessment("Mobile Application Development Using C# - LAP1", AssessmentType.Performance);
+                assessment.ID = 1;
+                assessment.CourseID = course.ID;
+                assessment.Notifications = true;
+                assessment.StartDate = DateTime.Now;
+                assessment.EndDate = DateTime.Now.AddDays(1);
+
+                CreateAssessment(assessment, course);
             }
             else
             {
-                connection = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "wgus.db3"));
+                connection = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "datas.db3"));
+                LoadTerms();
             }
-            await connection.CreateTableAsync<TermData>();
-            await connection.CreateTableAsync<CourseData>();
-            await connection.CreateTableAsync<AssessmentData>();
-            LoadTerms();
         }
 
         private async static void LoadTerms()
