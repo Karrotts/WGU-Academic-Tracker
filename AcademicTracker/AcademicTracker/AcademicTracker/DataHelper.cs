@@ -45,8 +45,8 @@ namespace AcademicTracker
                 course.EndDate = DateTime.Now.AddDays(1);
                 course.Notifications = true;
                 course.InstructorName = "Wes Miller";
-                course.InstructorPhone = "(888) 888-8888";
-                course.InstructorEmail = "wbmill48@wgu.edu";
+                course.InstructorPhone = "(615) 897-3825";
+                course.InstructorEmail = "wmill48@wgu.edu";
                 course.Status = CourseStatus.New;
                 course.Notes = "Mobile Application Development Using C# introduces students to programming for mobile devices. Building on students’ previous knowledge of programming in C#, " +
                                "this course investigates Xamarin.Forms and how it can be used to build a mobile application. This course explores a broad range of topics, including mobile user interface " +
@@ -55,8 +55,17 @@ namespace AcademicTracker
 
                 CreateCourse(course, term);
 
-                Assessment assessment = new Assessment("Mobile Application Development Using C# - LAP1", AssessmentType.Performance);
+                Assessment assessment = new Assessment("Mobile Application Development Using C# - LAP1", AssessmentType.Objective);
                 assessment.ID = 1;
+                assessment.CourseID = course.ID;
+                assessment.Notifications = true;
+                assessment.StartDate = DateTime.Now;
+                assessment.EndDate = DateTime.Now.AddDays(1);
+
+                CreateAssessment(assessment, course);
+
+                assessment = new Assessment("Mobile Application Development Using C# - LAP2", AssessmentType.Performance);
+                assessment.ID = 2;
                 assessment.CourseID = course.ID;
                 assessment.Notifications = true;
                 assessment.StartDate = DateTime.Now;
