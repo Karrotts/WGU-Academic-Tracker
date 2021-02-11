@@ -35,5 +35,3 @@ Any contributions you make are **greatly appreciated**.
 ## Contact
 
 Wes Miller - [@dev_karrotts](https://twitter.com/dev_karrotts) - wesley.b.miller@outlook.com
-
-Project Link: [https://github.com/karrotts/repo_name](https://github.com/karrotts/repo_name)
